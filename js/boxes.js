@@ -1,5 +1,5 @@
-(function() {
-  var canvas = document.querySelector('canvas'),
+$(document).ready(function() {(function() {
+  var canvas = document.querySelector('#boxes'),
     con = canvas.getContext('2d'),
     cwidth = canvas.width,
     cheight = canvas.height,
@@ -14,13 +14,13 @@
     linkBoxWidth = boxWidth * 3 + 10,
     links = [{
       text: "HOME",
-      path: "/"
+      path: ""
     }, {
       text: "PROJECTS",
-      path: "/projects"
+      path: "views/projects.html"
     }, {
       text: "BIO",
-      path: "/bio"
+      path: "views/bio.html"
     }],
     play = true,
     Shape = function(x, y, width, height) {
@@ -77,7 +77,7 @@
 
   function getLinkIdxs(linksSize, numBoxes) {
     var midBox = Math.floor(numBoxes / 2);
-    var firstLink = midBox - ((Math.floor(linksSize / 2) * 6));
+    var firstLink = midBox - 1 - ((Math.floor(linksSize / 2) * 6));
     var idxs = [];
 
     for (var l = 0; l < linksSize; l++) {
@@ -201,4 +201,5 @@
     return current;
   }
 
-})();
+  })();
+});
