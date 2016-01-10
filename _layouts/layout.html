@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Jesse Michael</title>
+		<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    {% include analytics.html %}
+	</head>
+	<body ng-app>
+		<canvas id="boxes" width="500" height="135"></canvas>
+
+		{{ content }}
+
+		<script src="/public/underscore/js/underscore-min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="/public/angular/js/angular-sanitize.min.js"></script>
+		<script src="/js/controllers.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/boxes.js"></script>
+	</body>
+</html>
