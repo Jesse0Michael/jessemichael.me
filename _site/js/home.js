@@ -27,7 +27,7 @@ function HomeCtrl($scope, $http) {
             content: content
           }
 
-          $scope.items.push.apply($scope.items,item)
+          $scope.items.push(item)
         }
 			})
 	}
@@ -51,18 +51,101 @@ function HomeCtrl($scope, $http) {
           var item = {
             date: data.createdAt,
             id: data.id,
-            source: "At " + data.venue.name + "On <a href = '" + data.source.url + "' style='text-decoration: none' target='_top'>Swarm <img src = '/content/icons/swarmBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>",
+            source: "At " + data.venue.name + " On <a href = '" + data.source.url + "' style='text-decoration: none' target='_top'>Swarm <img src = '/content/icons/swarmBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>",
             style: "width:36%",
             content: content
           }
 
-          $scope.items.push.apply($scope.items,item)
+          $scope.items.push(item)
 
-          alert($scope.items);
+          console.log($scope.items);
         }
 			})
 	}
 	fetchSwarm();
+
+  function fetchTwitter() {
+		var params = {
+      screen_name: "jesse0michael",
+      count: 2,
+      include_rts: true
+		}
+		$http.get("https://api.twitter.com/1.1/statuses/user_timeline.json", { params: params })
+			.success(function (resp) {
+        for (var i in resp) {
+          var data = resp[i]
+
+          var item = {
+            date: data.created_date,
+            id: data.id,
+            source: "On <a href = 'http://www.twitter.com/#!/Jesse0Michael' style='text-decoration: none' target='_top'>Twitter <img src = '/content/icons/twitterBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>",
+            style: "width:36%",
+            content: data.text_as_html
+          }
+
+          $scope.items.push(item)
+
+          console.log($scope.items);
+        }
+			})
+	}
+	fetchTwitter();
+
+  function fetchDeviantArt() {
+		var params = {
+      access_token: "",
+      username: "mini-michael",
+      mode: "newest",
+      limit: 2,
+      access_token: true
+		}
+		$http.get("https://www.deviantart.com/api/v1/oauth2/gallery/5251B071-78F9-727D-CC27-E0EAAB2BA9BD", { params: params })
+			.success(function (resp) {
+        for (var i in resp.results) {
+          var data = resp.results[i]
+
+          var item = {
+            date: data.published_time,
+            id: data.deviationid,
+            source: "\"" + data.title + "\" On <a href = '" + data.url + "' style='text-decoration: none' target='_top'>Deviant Art <img src = '/content/icons/deviantart2BW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>",
+            style: "width:36%",
+            content: "<center><img src = '" + data.thumbs[data.thumbs.size].src + "' ></center>"
+          }
+
+          $scope.items.push(item)
+
+          console.log($scope.items);
+        }
+			})
+	}
+	fetchDeviantArt();
+
+  function fetchBlogger() {
+		var params = {
+      key: "AIzaSyBU3_KGZO90Vu_s8Lhbl7lJAEsaIouAEaY",
+      fetchBodies: true,
+      maxResults: 2
+		}
+		$http.get("https://www.googleapis.com/blogger/v2/blogs/2628647666607369284/posts", { params: params })
+			.success(function (resp) {
+        for (var i in resp.items) {
+          var data = resp.items[i]
+
+          var item = {
+            date: data.published,
+            id: data.id,
+            source: "On <a href = '" + data.url + "' style='text-decoration: none' target='_top'>Blogger <img src = '/content/icons/bloggerBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>",
+            style: "width:88%",
+            content: data.content
+          }
+
+          $scope.items.push(item)
+
+          console.log($scope.items);
+        }
+			})
+	}
+	fetchBlogger();
 
 }
 
