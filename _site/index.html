@@ -20,22 +20,22 @@
 		<canvas id="boxes" width="500" height="135"></canvas>
 
 		<div class ="blog" ng-controller="HomeCtrl">
-
-    <div ng-repeat="item in items" id="box-" class="blog-box" style="" >
-        
+  
+    <div ng-repeat="item in items" id="box-{{item.id}}" class="blog-box" style="{{item.style}}" >
+        <div ng-bind-html="item.content"></div>
 
 
         <br />
 
-        <div class="blog-discript">
-            
+        <div class="blog-discript" ng-bind-html="item.source">
         </div>
 
         <div class="blog-date">
-            
+          {{item.date}}
         </div>
 
     </div>
+  
 
     <!-- <script>
         $("#box-").mouseenter(function(){

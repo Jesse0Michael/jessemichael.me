@@ -1,12 +1,18 @@
-function HomeCtrl($scope, $http) {
+var app = angular.module('app',[]);
+
+HomeCtrl.$inject = ['$scope', '$http', '$sce'];
+app.controller('HomeCtrl', HomeCtrl);
+
+function HomeCtrl($scope, $http, $sce) {
   $scope.items = [];
 
 	function fetchInstagram() {
 		var params = {
 			access_token: "50957893.c4c5a38.45731381623a4ddd86c042851d4d317f",
-      counts: 2
+      count: 2,
+      callback: "JSON_CALLBACK"
 		}
-		$http.get("https://api.instagram.com/v1/users/50957893/media/recent/", { params: params })
+		$http.jsonp("https://api.instagram.com/v1/users/50957893/media/recent/", { params: params })
 			.success(function (resp) {
         for (var i in resp.data) {
           var data = resp.data[i]
@@ -22,12 +28,12 @@ function HomeCtrl($scope, $http) {
           var item = {
             date: data.created_time,
             id: data.id,
-            source: "On <a href = '" + data.link + "' style='text-decoration: none' target='_top'>Instagram <img src = '/content/icons/instagramBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>",
+            source: $sce.trustAsHtml("On <a href = '" + data.link + "' style='text-decoration: none' target='_top'>Instagram <img src = '/content/icons/instagramBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: "width:36%",
-            content: content
+            content: $sce.trustAsHtml(content)
           }
 
-          $scope.items.push(item)
+          $scope.items.push(item);
         }
 			})
 	}
@@ -45,20 +51,18 @@ function HomeCtrl($scope, $http) {
           var data = resp.response.checkins.items[i]
           var content = "";
           if(data.photos.items.length > 0) {
-            content = "<center><img src = '" + data.photos.items.prefix + "300x300" + data.photos.items.suffix + "' ></center>";
+            content = "<center><img src = '" + data.photos.items[0].prefix + "300x300" + data.photos.items[0].suffix + "' ></center>";
           }
 
           var item = {
             date: data.createdAt,
             id: data.id,
-            source: "At " + data.venue.name + " On <a href = '" + data.source.url + "' style='text-decoration: none' target='_top'>Swarm <img src = '/content/icons/swarmBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>",
+            source: $sce.trustAsHtml("At " + data.venue.name + " On <a href = '" + data.source.url + "' style='text-decoration: none' target='_top'>Swarm <img src = '/content/icons/swarmBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: "width:36%",
-            content: content
+            content: $sce.trustAsHtml(content)
           }
 
-          $scope.items.push(item)
-
-          console.log($scope.items);
+          $scope.items.push(item);
         }
 			})
 	}
@@ -70,6 +74,7 @@ function HomeCtrl($scope, $http) {
       count: 2,
       include_rts: true
 		}
+
 		$http.get("https://api.twitter.com/1.1/statuses/user_timeline.json", { params: params })
 			.success(function (resp) {
         for (var i in resp) {
@@ -78,43 +83,42 @@ function HomeCtrl($scope, $http) {
           var item = {
             date: data.created_date,
             id: data.id,
-            source: "On <a href = 'http://www.twitter.com/#!/Jesse0Michael' style='text-decoration: none' target='_top'>Twitter <img src = '/content/icons/twitterBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>",
+            source: $sce.trustAsHtml("On <a href = 'http://www.twitter.com/#!/Jesse0Michael' style='text-decoration: none' target='_top'>Twitter <img src = '/content/icons/twitterBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: "width:36%",
-            content: data.text_as_html
+            content: $sce.trustAsHtml(data.text_as_html)
           }
 
           $scope.items.push(item)
-
-          console.log($scope.items);
         }
 			})
 	}
 	fetchTwitter();
 
   function fetchDeviantArt() {
-		var params = {
-      access_token: "",
-      username: "mini-michael",
-      mode: "newest",
-      limit: 2,
-      access_token: true
+    // Parse Deviantart RSS feed and get past CORS through https://developer.yahoo.com/yql/
+    var url = "http://backend.deviantart.com/rss.xml?q=gallery:mini-michael/33242408"
+    var params = {
+			q: "select * from html where url='" + url + "'",
+      format: "json",
+      env: "store://datatables.org/alltableswithkeys"
 		}
-		$http.get("https://www.deviantart.com/api/v1/oauth2/gallery/5251B071-78F9-727D-CC27-E0EAAB2BA9BD", { params: params })
-			.success(function (resp) {
-        for (var i in resp.results) {
-          var data = resp.results[i]
 
+    $http.get("https://query.yahooapis.com/v1/public/yql", { params: params })
+			.success(function (resp) {
+        var count = Math.min(resp.query.results.body.rss.channel.item.length, 2)
+        for (var i = 0; i < count; i++) {
+          var data = resp.query.results.body.rss.channel.item[i]
+          var urlParts = data.guid.content.split("/")
+          var title = urlParts[urlParts.length - 1].split("-")[0]
           var item = {
-            date: data.published_time,
-            id: data.deviationid,
-            source: "\"" + data.title + "\" On <a href = '" + data.url + "' style='text-decoration: none' target='_top'>Deviant Art <img src = '/content/icons/deviantart2BW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>",
+            date: data.pubdate,
+            id: data.guid,
+            source: $sce.trustAsHtml("\"" + title + "\" On <a href = '" + data.guid.content + "' style='text-decoration: none' target='_top'>Deviant Art <img src = '/content/icons/deviantart2BW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: "width:36%",
-            content: "<center><img src = '" + data.thumbs[data.thumbs.size].src + "' ></center>"
+            content: $sce.trustAsHtml("<center><img src = '" + data.thumbnail.thumbnail.url + "' ></center>")
           }
 
           $scope.items.push(item)
-
-          console.log($scope.items);
         }
 			})
 	}
@@ -134,20 +138,15 @@ function HomeCtrl($scope, $http) {
           var item = {
             date: data.published,
             id: data.id,
-            source: "On <a href = '" + data.url + "' style='text-decoration: none' target='_top'>Blogger <img src = '/content/icons/bloggerBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>",
+            source: $sce.trustAsHtml("On <a href = '" + data.url + "' style='text-decoration: none' target='_top'>Blogger <img src = '/content/icons/bloggerBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: "width:88%",
-            content: data.content
+            content: $sce.trustAsHtml(data.content)
           }
 
           $scope.items.push(item)
-
-          console.log($scope.items);
         }
 			})
 	}
 	fetchBlogger();
 
 }
-
-HomeCtrl.$inject = ['$scope', '$http'];
-angular.module('app', []).controller('HomeCtrl', HomeCtrl);

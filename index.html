@@ -4,22 +4,22 @@ name: home
 ---
 
 <div class ="blog" ng-controller="HomeCtrl">
-
+  {% raw %}
     <div ng-repeat="item in items" id="box-{{item.id}}" class="blog-box" style="{{item.style}}" >
-        {{item.content}}
+        <div ng-bind-html="item.content"></div>
 
 
         <br />
 
-        <div class="blog-discript">
-            {{item.source}}
+        <div class="blog-discript" ng-bind-html="item.source">
         </div>
 
         <div class="blog-date">
-            {{item.date}}
+          {{item.date}}
         </div>
 
     </div>
+  {% endraw %}
 
     <!-- <script>
         $("#box-{{item.id}}").mouseenter(function(){
