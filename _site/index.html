@@ -21,7 +21,8 @@
 
 		<div class ="blog" ng-controller="HomeCtrl">
   
-    <div ng-repeat="item in items" id="box-{{item.id}}" class="blog-box" style="{{item.style}}" >
+    <div ng-repeat="item in items | orderBy:'-date'" id="box-{{item.id}}" class="blog-box color-box" style="{{item.style}}"
+     ng-class="{color: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
         <div ng-bind-html="item.content"></div>
 
 
@@ -31,27 +32,30 @@
         </div>
 
         <div class="blog-date">
-          {{item.date}}
+          {{item.dateFormat}}
         </div>
 
-    </div>
-  
-
     <!-- <script>
-        $("#box-").mouseenter(function(){
-            blogEnter();
+        $("#box-{{item.id}}").mouseenter(function(){
+            blogEnter(item.id);
         });
-        $("#box-").mouseleave(function () {
-            blogExit();
+        $("#box-{{item.id}}").mouseleave(function () {
+            blogExit(item.id);
         });
     </script> -->
+
+  </div>
+
+  
 
 </div>
 
 
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     <script type="text/javascript" src="/js/boxes.js"></script>
 		<script type="text/javascript" src="/js/home.js"></script>
+		<script type="text/javascript" src="/js/color.js"></script>
 	</body>
 </html>

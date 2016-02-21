@@ -1,4 +1,5 @@
-var app = angular.module('app',[]);
+var app = angular.module('app',['ngAnimate', 'colorBoxes']);
+
 
 HomeCtrl.$inject = ['$scope', '$http', '$sce'];
 app.controller('HomeCtrl', HomeCtrl);
@@ -19,14 +20,15 @@ function HomeCtrl($scope, $http, $sce) {
           var content = "";
           if(data.type == "video") {
             var gramURL = data.videos.standard_resolution.url;
-            content = "<center><video id = \"" + data.id + "\" width='300' height='300' controls><source src = \"" + gramURL + "\" type='video/mp4'></video></center>";
+            content = "<center><video id = \"" + data.id + "\" width='300' height='300'><source src = \"" + gramURL + "\" type='video/mp4'></video></center>";
           } else {
             var gramURL = data.images.standard_resolution.url;
             content = "<center><img src = '" + gramURL + "' width='300' height='300'></center>";
           }
-
+          var date =new Date(data.created_time * 1000)
           var item = {
-            date: data.created_time,
+            date: date,
+            dateFormat: date.toLocaleString('en-US'),
             id: data.id,
             source: $sce.trustAsHtml("On <a href = '" + data.link + "' style='text-decoration: none' target='_top'>Instagram <img src = '/content/icons/instagramBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: "width:36%",
@@ -53,9 +55,10 @@ function HomeCtrl($scope, $http, $sce) {
           if(data.photos.items.length > 0) {
             content = "<center><img src = '" + data.photos.items[0].prefix + "300x300" + data.photos.items[0].suffix + "' ></center>";
           }
-
+          var date = new Date(data.createdAt * 1000)
           var item = {
-            date: data.createdAt,
+            date: date,
+            dateFormat: date.toLocaleString('en-US'),
             id: data.id,
             source: $sce.trustAsHtml("At " + data.venue.name + " On <a href = '" + data.source.url + "' style='text-decoration: none' target='_top'>Swarm <img src = '/content/icons/swarmBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: "width:36%",
@@ -79,9 +82,10 @@ function HomeCtrl($scope, $http, $sce) {
 			.success(function (resp) {
         for (var i in resp) {
           var data = resp[i]
-
+          var date = new Date(data.created_date)
           var item = {
-            date: data.created_date,
+            date: date,
+            dateFormat: date.toLocaleString('en-US'),
             id: data.id,
             source: $sce.trustAsHtml("On <a href = 'http://www.twitter.com/#!/Jesse0Michael' style='text-decoration: none' target='_top'>Twitter <img src = '/content/icons/twitterBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: "width:36%",
@@ -110,9 +114,11 @@ function HomeCtrl($scope, $http, $sce) {
           var data = resp.query.results.body.rss.channel.item[i]
           var urlParts = data.guid.content.split("/")
           var title = urlParts[urlParts.length - 1].split("-")[0]
+          var date = new Date(data.pubdate)
           var item = {
-            date: data.pubdate,
-            id: data.guid,
+            date: date,
+            dateFormat: date.toLocaleString('en-US'),
+            id: title,
             source: $sce.trustAsHtml("\"" + title + "\" On <a href = '" + data.guid.content + "' style='text-decoration: none' target='_top'>Deviant Art <img src = '/content/icons/deviantart2BW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: "width:36%",
             content: $sce.trustAsHtml("<center><img src = '" + data.thumbnail.thumbnail.url + "' ></center>")
@@ -134,9 +140,10 @@ function HomeCtrl($scope, $http, $sce) {
 			.success(function (resp) {
         for (var i in resp.items) {
           var data = resp.items[i]
-
+          var date = new Date(data.published)
           var item = {
-            date: data.published,
+            date: date,
+            dateFormat: date.toLocaleString('en-US'),
             id: data.id,
             source: $sce.trustAsHtml("On <a href = '" + data.url + "' style='text-decoration: none' target='_top'>Blogger <img src = '/content/icons/bloggerBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: "width:88%",

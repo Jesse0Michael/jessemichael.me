@@ -5,7 +5,8 @@ name: home
 
 <div class ="blog" ng-controller="HomeCtrl">
   {% raw %}
-    <div ng-repeat="item in items" id="box-{{item.id}}" class="blog-box" style="{{item.style}}" >
+    <div ng-repeat="item in items | orderBy:'-date'" id="box-{{item.id}}" class="blog-box color-box" style="{{item.style}}"
+     ng-class="{color: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
         <div ng-bind-html="item.content"></div>
 
 
@@ -15,19 +16,20 @@ name: home
         </div>
 
         <div class="blog-date">
-          {{item.date}}
+          {{item.dateFormat}}
         </div>
-
-    </div>
-  {% endraw %}
 
     <!-- <script>
         $("#box-{{item.id}}").mouseenter(function(){
-            blogEnter({{item.id}});
+            blogEnter(item.id);
         });
         $("#box-{{item.id}}").mouseleave(function () {
-            blogExit({{item.id}});
+            blogExit(item.id);
         });
     </script> -->
+
+  </div>
+
+  {% endraw %}
 
 </div>
