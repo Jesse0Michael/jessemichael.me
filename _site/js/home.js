@@ -1,16 +1,15 @@
-var app = angular.module('app',['ngAnimate', 'colorBoxes']);
+var app = angular.module('app',['ngAnimate', 'colorBoxes', 'ngTweets']);
 
-
-HomeCtrl.$inject = ['$scope', '$http', '$sce'];
+HomeCtrl.$inject = ['$scope', '$http', '$sce', 'tweets'];
 app.controller('HomeCtrl', HomeCtrl);
 
-function HomeCtrl($scope, $http, $sce) {
+function HomeCtrl($scope, $http, $sce, tweets) {
   $scope.items = [];
 
 	function fetchInstagram() {
 		var params = {
 			access_token: "50957893.c4c5a38.45731381623a4ddd86c042851d4d317f",
-      count: 2,
+      count: 20,
       callback: "JSON_CALLBACK"
 		}
 		$http.jsonp("https://api.instagram.com/v1/users/50957893/media/recent/", { params: params })
@@ -25,10 +24,9 @@ function HomeCtrl($scope, $http, $sce) {
             var gramURL = data.images.standard_resolution.url;
             content = "<center><img src = '" + gramURL + "' width='300' height='300'></center>";
           }
-          var date =new Date(data.created_time * 1000)
+
           var item = {
-            date: date,
-            dateFormat: date.toLocaleString('en-US'),
+            date: new Date(data.created_time * 1000),
             id: data.id,
             source: $sce.trustAsHtml("On <a href = '" + data.link + "' style='text-decoration: none' target='_top'>Instagram <img src = '/content/icons/instagramBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: "width:36%",
@@ -44,21 +42,20 @@ function HomeCtrl($scope, $http, $sce) {
   function fetchSwarm() {
 		var params = {
 			oauth_token: "OU2LAHV5RHIWU22OSUUA2QRXAWYWDISJBCY2SS5ANH41PRXS",
-      limit: 2,
+      limit: 20,
       v: 20140806
 		}
 		$http.get("https://api.foursquare.com/v2/users/self/checkins", { params: params })
 			.success(function (resp) {
         for (var i in resp.response.checkins.items) {
           var data = resp.response.checkins.items[i]
-          var content = "";
+          var content = ""
           if(data.photos.items.length > 0) {
-            content = "<center><img src = '" + data.photos.items[0].prefix + "300x300" + data.photos.items[0].suffix + "' ></center>";
+            content = "<center><img src = '" + data.photos.items[0].prefix + "300x300" + data.photos.items[0].suffix + "' ></center>"
           }
-          var date = new Date(data.createdAt * 1000)
+
           var item = {
-            date: date,
-            dateFormat: date.toLocaleString('en-US'),
+            date: new Date(data.createdAt * 1000),
             id: data.id,
             source: $sce.trustAsHtml("At " + data.venue.name + " On <a href = '" + data.source.url + "' style='text-decoration: none' target='_top'>Swarm <img src = '/content/icons/swarmBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: "width:36%",
@@ -72,29 +69,29 @@ function HomeCtrl($scope, $http, $sce) {
 	fetchSwarm();
 
   function fetchTwitter() {
-		var params = {
-      screen_name: "jesse0michael",
-      count: 2,
-      include_rts: true
-		}
+    //https://github.com/forwardadvance/ng-tweets
+    tweets.get({
+      widgetId: '701629651890806784'
+    }).then(function(resp) {
 
-		$http.get("https://api.twitter.com/1.1/statuses/user_timeline.json", { params: params })
-			.success(function (resp) {
-        for (var i in resp) {
-          var data = resp[i]
-          var date = new Date(data.created_date)
-          var item = {
-            date: date,
-            dateFormat: date.toLocaleString('en-US'),
-            id: data.id,
-            source: $sce.trustAsHtml("On <a href = 'http://www.twitter.com/#!/Jesse0Michael' style='text-decoration: none' target='_top'>Twitter <img src = '/content/icons/twitterBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
-            style: "width:36%",
-            content: $sce.trustAsHtml(data.text_as_html)
-          }
-
-          $scope.items.push(item)
+      for (var i in resp.data.tweets) {
+        var data = resp.data.tweets[i]
+        var retweet = ""
+        if(data.retweet == true) {
+          retweet = "<a href = '" + data.author.url + "' style='text-decoration: none' target='_top'>" + data.author.nickName + ": </a>"
         }
-			})
+
+        var item = {
+          date: new Date(data.dateTime),
+          id: data.id,
+          source: $sce.trustAsHtml("On <a href = '" + data.permalink + "' style='text-decoration: none' target='_top'>Twitter <img src = '/content/icons/twitterBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
+          style: "width:36%",
+          content: $sce.trustAsHtml(retweet + data.html)
+        }
+
+        $scope.items.push(item)
+      }
+    })
 	}
 	fetchTwitter();
 
@@ -109,15 +106,14 @@ function HomeCtrl($scope, $http, $sce) {
 
     $http.get("https://query.yahooapis.com/v1/public/yql", { params: params })
 			.success(function (resp) {
-        var count = Math.min(resp.query.results.body.rss.channel.item.length, 2)
+        var count = Math.min(resp.query.results.body.rss.channel.item.length, 20)
         for (var i = 0; i < count; i++) {
           var data = resp.query.results.body.rss.channel.item[i]
           var urlParts = data.guid.content.split("/")
           var title = urlParts[urlParts.length - 1].split("-")[0]
-          var date = new Date(data.pubdate)
+
           var item = {
-            date: date,
-            dateFormat: date.toLocaleString('en-US'),
+            date: new Date(data.pubdate),
             id: title,
             source: $sce.trustAsHtml("\"" + title + "\" On <a href = '" + data.guid.content + "' style='text-decoration: none' target='_top'>Deviant Art <img src = '/content/icons/deviantart2BW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: "width:36%",
@@ -134,16 +130,15 @@ function HomeCtrl($scope, $http, $sce) {
 		var params = {
       key: "AIzaSyBU3_KGZO90Vu_s8Lhbl7lJAEsaIouAEaY",
       fetchBodies: true,
-      maxResults: 2
+      maxResults: 20
 		}
 		$http.get("https://www.googleapis.com/blogger/v2/blogs/2628647666607369284/posts", { params: params })
 			.success(function (resp) {
         for (var i in resp.items) {
           var data = resp.items[i]
-          var date = new Date(data.published)
+
           var item = {
-            date: date,
-            dateFormat: date.toLocaleString('en-US'),
+            date: new Date(data.published),
             id: data.id,
             source: $sce.trustAsHtml("On <a href = '" + data.url + "' style='text-decoration: none' target='_top'>Blogger <img src = '/content/icons/bloggerBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: "width:88%",
