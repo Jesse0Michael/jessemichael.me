@@ -5,6 +5,7 @@ ani.animation('.color-box', function(){
   return{
     addClass: function(element, className, done){
       if(className == 'color') {
+        console.log(element[0])
         try {
           document.getElementById(element[0].id.replace('box-','')).play();
         }

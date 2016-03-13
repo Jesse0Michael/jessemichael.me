@@ -3,33 +3,16 @@ layout: layout
 name: home
 ---
 
-<div class ="blog" ng-controller="HomeCtrl">
+<div class="blog" ng-controller="HomeCtrl">
   {% raw %}
-    <div ng-repeat="item in items | orderBy:'-date'" id="box-{{item.id}}" class="blog-box color-box" style="{{item.style}}"
-     ng-class="{color: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
-        <div ng-bind-html="item.content"></div>
-
-
-        <br />
-
-        <div class="blog-discript" ng-bind-html="item.source">
-        </div>
-
-        <div class="blog-date">
-          {{item.date.toLocaleString('en-US')}}
-        </div>
-
-    <!-- <script>
-        $("#box-{{item.id}}").mouseenter(function(){
-            blogEnter(item.id);
-        });
-        $("#box-{{item.id}}").mouseleave(function () {
-            blogExit(item.id);
-        });
-    </script> -->
-
+  <div ng-repeat="item in items | orderBy:'-date'" id="box-{{item.id}}" class="blog-box color-box" style="{{item.style}}"
+    ng-class="{color:hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
+    <div ng-bind-html="item.content"></div>
+    <br />
+    <div class="blog-discript" ng-bind-html="item.source"></div>
+    <div class="blog-date">
+      {{item.date.toLocaleString('en-US')}}
+    </div>
   </div>
-
   {% endraw %}
-
 </div>

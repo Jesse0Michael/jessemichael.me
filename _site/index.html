@@ -19,35 +19,18 @@
 	<body ng-app="app">
 		<canvas id="boxes" width="500" height="135"></canvas>
 
-		<div class ="blog" ng-controller="HomeCtrl">
+		<div class="blog" ng-controller="HomeCtrl">
   
-    <div ng-repeat="item in items | orderBy:'-date'" id="box-{{item.id}}" class="blog-box color-box" style="{{item.style}}"
-     ng-class="{color: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
-        <div ng-bind-html="item.content"></div>
-
-
-        <br />
-
-        <div class="blog-discript" ng-bind-html="item.source">
-        </div>
-
-        <div class="blog-date">
-          {{item.date.toLocaleString('en-US')}}
-        </div>
-
-    <!-- <script>
-        $("#box-{{item.id}}").mouseenter(function(){
-            blogEnter(item.id);
-        });
-        $("#box-{{item.id}}").mouseleave(function () {
-            blogExit(item.id);
-        });
-    </script> -->
-
+  <div ng-repeat="item in items | orderBy:'-date'" id="box-{{item.id}}" class="blog-box color-box" style="{{item.style}}"
+    ng-class="{color:hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
+    <div ng-bind-html="item.content"></div>
+    <br />
+    <div class="blog-discript" ng-bind-html="item.source"></div>
+    <div class="blog-date">
+      {{item.date.toLocaleString('en-US')}}
+    </div>
   </div>
-
   
-
 </div>
 
 
@@ -57,6 +40,7 @@
 		<script type="text/javascript" src="/js/ng-tweets.js"></script>
     <script type="text/javascript" src="/js/boxes.js"></script>
 		<script type="text/javascript" src="/js/home.js"></script>
+		<script type="text/javascript" src="/js/project.js"></script>
 		<script type="text/javascript" src="/js/color.js"></script>
 		<script type="text/javascript" src="https://cdn.rawgit.com/moski/gist-Blogger/master/public/gistLoader.js"></script>
 	</body>

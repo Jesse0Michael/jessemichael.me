@@ -4,12 +4,15 @@ HomeCtrl.$inject = ['$scope', '$http', '$sce', 'tweets'];
 app.controller('HomeCtrl', HomeCtrl);
 
 function HomeCtrl($scope, $http, $sce, tweets) {
-  $scope.items = [];
+  $scope.items = []
+  $scope.count = 12
+  $scope.smallWidth = "width:36%"
+  $scope.largeWidth = "width:85%"
 
 	function fetchInstagram() {
 		var params = {
 			access_token: "50957893.c4c5a38.45731381623a4ddd86c042851d4d317f",
-      count: 20,
+      count: $scope.count,
       callback: "JSON_CALLBACK"
 		}
 		$http.jsonp("https://api.instagram.com/v1/users/50957893/media/recent/", { params: params })
@@ -29,7 +32,7 @@ function HomeCtrl($scope, $http, $sce, tweets) {
             date: new Date(data.created_time * 1000),
             id: data.id,
             source: $sce.trustAsHtml("On <a href = '" + data.link + "' style='text-decoration: none' target='_top'>Instagram <img src = '/content/icons/instagramBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
-            style: "width:36%",
+            style: $scope.smallWidth,
             content: $sce.trustAsHtml(content)
           }
 
@@ -42,7 +45,7 @@ function HomeCtrl($scope, $http, $sce, tweets) {
   function fetchSwarm() {
 		var params = {
 			oauth_token: "OU2LAHV5RHIWU22OSUUA2QRXAWYWDISJBCY2SS5ANH41PRXS",
-      limit: 20,
+      limit: $scope.count,
       v: 20140806
 		}
 		$http.get("https://api.foursquare.com/v2/users/self/checkins", { params: params })
@@ -58,7 +61,7 @@ function HomeCtrl($scope, $http, $sce, tweets) {
             date: new Date(data.createdAt * 1000),
             id: data.id,
             source: $sce.trustAsHtml("At " + data.venue.name + " On <a href = '" + data.source.url + "' style='text-decoration: none' target='_top'>Swarm <img src = '/content/icons/swarmBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
-            style: "width:36%",
+            style: $scope.smallWidth,
             content: $sce.trustAsHtml(content)
           }
 
@@ -85,7 +88,7 @@ function HomeCtrl($scope, $http, $sce, tweets) {
           date: new Date(data.dateTime),
           id: data.id,
           source: $sce.trustAsHtml("On <a href = '" + data.permalink + "' style='text-decoration: none' target='_top'>Twitter <img src = '/content/icons/twitterBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
-          style: "width:36%",
+          style: $scope.smallWidth,
           content: $sce.trustAsHtml(retweet + data.html)
         }
 
@@ -106,7 +109,7 @@ function HomeCtrl($scope, $http, $sce, tweets) {
 
     $http.get("https://query.yahooapis.com/v1/public/yql", { params: params })
 			.success(function (resp) {
-        var count = Math.min(resp.query.results.body.rss.channel.item.length, 20)
+        var count = Math.min(resp.query.results.body.rss.channel.item.length, $scope.count)
         for (var i = 0; i < count; i++) {
           var data = resp.query.results.body.rss.channel.item[i]
           var urlParts = data.guid.content.split("/")
@@ -116,7 +119,7 @@ function HomeCtrl($scope, $http, $sce, tweets) {
             date: new Date(data.pubdate),
             id: title,
             source: $sce.trustAsHtml("\"" + title + "\" On <a href = '" + data.guid.content + "' style='text-decoration: none' target='_top'>Deviant Art <img src = '/content/icons/deviantart2BW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
-            style: "width:36%",
+            style: $scope.smallWidth,
             content: $sce.trustAsHtml("<center><img src = '" + data.thumbnail.thumbnail.url + "' ></center>")
           }
 
@@ -130,7 +133,7 @@ function HomeCtrl($scope, $http, $sce, tweets) {
 		var params = {
       key: "AIzaSyBU3_KGZO90Vu_s8Lhbl7lJAEsaIouAEaY",
       fetchBodies: true,
-      maxResults: 20
+      maxResults: $scope.count
 		}
 		$http.get("https://www.googleapis.com/blogger/v2/blogs/2628647666607369284/posts", { params: params })
 			.success(function (resp) {
@@ -141,7 +144,7 @@ function HomeCtrl($scope, $http, $sce, tweets) {
             date: new Date(data.published),
             id: data.id,
             source: $sce.trustAsHtml("On <a href = '" + data.url + "' style='text-decoration: none' target='_top'>Blogger <img src = '/content/icons/bloggerBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
-            style: "width:88%",
+            style: $scope.largeWidth,
             content: $sce.trustAsHtml(data.content)
           }
 
