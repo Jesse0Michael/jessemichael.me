@@ -44,8 +44,4 @@ function ProjectCtrl($scope, $sce) {
     url: "/projects/alpoh.html",
     body: $sce.trustAsHtml(`This side-scrolling game tells the story of a beautiful girl who was kidnapped and the man fighting his way to get him back. The game takes you through 4 unique levels where you fight your way through, hoping to reach your kidnapped girlfriend. A Little Piece of Heaven is a 2D side-scroller developed in GameMaker, with unique art, developed by me. The game play for this game is not all that exciting but I am really proud of the art that was created for each unique level.`)
   }]
-
-
-
-
 }
