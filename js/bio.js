@@ -33,6 +33,16 @@ function BioCtrl($scope, $window) {
     image: "/content/icons/linkedin.png",
     url: "http://www.linkedin.com/pub/jesse-michael/4a/801/a14"
   },{
+    id: "soundcloud",
+    title: "Sound Cloud",
+    image: "/content/icons/soundcloud.png",
+    url: "https://soundcloud.com/jesse0michael"
+  },{
+    id: "steam",
+    title: "Steam",
+    image: "/content/icons/steam.png",
+    url: "https://steamcommunity.com/id/Jesse0Michael"
+  },{
     id: "twitter",
     title: "Twitter",
     image: "/content/icons/twitter.png",
