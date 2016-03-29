@@ -74,7 +74,7 @@ function HomeCtrl($scope, $http, $sce, tweets) {
   function fetchTwitter() {
     //https://github.com/forwardadvance/ng-tweets
     tweets.get({
-      widgetId: '701629651890806784'
+      widgetId: '714647134084050945'
     }).then(function(resp) {
 
       for (var i in resp.data.tweets) {
