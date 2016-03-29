@@ -154,4 +154,41 @@ function HomeCtrl($scope, $http, $sce, tweets) {
 	}
 	fetchBlogger();
 
+  function fetchSoundCloud() {
+		var params = {
+      client_id: "f330c0bb90f1c89a15e78ece83e21856",
+      limit: $scope.count = 12
+		}
+    soundItems = []
+		$http.get("http://api.soundcloud.com/users/20560365/tracks", { params: params })
+			.success(function (resp) {
+        for (var i in resp) {
+          var data = createSoundCloudItem(resp[i])
+
+          $scope.items.push(data)
+        }
+			})
+
+    $http.get("http://api.soundcloud.com/users/20560365/favorites", { params: params })
+			.success(function (resp) {
+        for (var i in resp) {
+          var data = createSoundCloudItem(resp[i])
+
+          $scope.items.push(data)
+        }
+			})
+	}
+  function createSoundCloudItem(data) {
+    var iframeSrc = "https://w.soundcloud.com/player/?url=" + data.uri + "&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false"
+    var content = $sce.trustAsHtml("<iframe id='iframe-" + data.id + "' class='sc-widget' src='" + iframeSrc + "' width='100%' height='130' scrolling='no' frameborder='no' target='_top'></iframe>")
+    return item = {
+      date: new Date(data.created_at),
+      id: data.id,
+      source: $sce.trustAsHtml("On <a href = '" + data.permalink_url + "' style='text-decoration: none' target='_top'>Sound Cloud <img src = '/content/icons/soundcloudBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
+      style: $scope.smallWidth,
+      content: content
+    }
+  }
+	fetchSoundCloud();
+
 }
