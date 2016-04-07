@@ -6,8 +6,8 @@ app.controller('HomeCtrl', HomeCtrl);
 function HomeCtrl($scope, $http, $sce, tweets) {
   $scope.items = []
   $scope.count = 12
-  $scope.smallWidth = "width:36%"
-  $scope.largeWidth = "width:85%"
+  $scope.smallWidth = "small-box"
+  $scope.largeWidth = "large-box"
 
 	function fetchInstagram() {
 		var params = {

@@ -43,6 +43,14 @@ img {
   float:left;
 }
 
+.small-box {
+	width: 36%;
+}
+
+.large-box {
+	width: 85%
+}
+
 .discript {
 	font-family: calibri;
 	font-style: bold;
@@ -157,19 +165,9 @@ img {
 	left:250px;
 }
 
-.bio-column-1 {
-	overflow:auto;
-    float: left;
-    width: 30%;
-    padding: 1% 10%;
-    height: 100%;
-}
-
-.bio-column-2 {
-	overflow:auto;
-	padding: 1% 0%;
-	left: 1%;
-  width: 30%;
+.bio-frame {
+	width:860px;
+	height:2150px;
 }
 
 .color-box {

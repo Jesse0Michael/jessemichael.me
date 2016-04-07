@@ -4,6 +4,7 @@
 		<title>Jesse Michael</title>
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="/css/base.css" />
+		<link rel="stylesheet" type="text/css" href="/css/mobile.css" />
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -19,7 +20,7 @@
 	<body ng-app="app">
 		<canvas id="boxes" width="500" height="135"></canvas>
 
-		<div ng-controller="BioCtrl" class="blog" style="width:78%;">
+		<div ng-controller="BioCtrl" class="blog">
   
   <div ng-repeat="bio in bios" id="{{bio.id}}" class="bio-box pointer color-box" ng-click="redirect(bio.url)"
     ng-class="{color:hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
@@ -28,10 +29,10 @@
       </span>
     </div>
   
-</div>
-<br /><br />
-<div id="contents" style="text-align:center;">
-    <iframe src="https://docs.google.com/document/d/1wkyLrtQeuoOCQ5AmR25te1_PJQm02bjJpBkdKS5o4pE/pub?embedded=true" style="width:860px; height:2150px;"></iframe>
+  <br /><br />
+  <div id="contents" style="text-align:center;">
+      <iframe src="https://docs.google.com/document/d/1wkyLrtQeuoOCQ5AmR25te1_PJQm02bjJpBkdKS5o4pE/pub?embedded=true" class="bio-frame"></iframe>
+  </div>
 </div>
 
 

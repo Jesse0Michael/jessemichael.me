@@ -4,6 +4,7 @@
 		<title>Jesse Michael</title>
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="/css/base.css" />
+		<link rel="stylesheet" type="text/css" href="/css/mobile.css" />
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -21,7 +22,7 @@
 
 		<div class="blog" ng-controller="HomeCtrl">
   
-  <div ng-repeat="item in items | orderBy:'-date'" id="box-{{item.id}}" class="blog-box color-box" style="{{item.style}}"
+  <div ng-repeat="item in items | orderBy:'-date'" id="box-{{item.id}}" class="blog-box color-box {{item.style}}"
     ng-class="{color:hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
     <div ng-bind-html="item.content"></div>
     <br />

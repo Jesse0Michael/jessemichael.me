@@ -4,7 +4,7 @@ name: bio
 ---
 
 
-<div ng-controller="BioCtrl" class="blog" style="width:78%;">
+<div ng-controller="BioCtrl" class="blog">
   {% raw %}
   <div ng-repeat="bio in bios" id="{{bio.id}}" class="bio-box pointer color-box" ng-click="redirect(bio.url)"
     ng-class="{color:hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
@@ -13,8 +13,8 @@ name: bio
       </span>
     </div>
   {% endraw %}
-</div>
-<br /><br />
-<div id="contents" style="text-align:center;">
-    <iframe src="https://docs.google.com/document/d/1wkyLrtQeuoOCQ5AmR25te1_PJQm02bjJpBkdKS5o4pE/pub?embedded=true" style="width:860px; height:2150px;"></iframe>
+  <br /><br />
+  <div id="contents" style="text-align:center;">
+      <iframe src="https://docs.google.com/document/d/1wkyLrtQeuoOCQ5AmR25te1_PJQm02bjJpBkdKS5o4pE/pub?embedded=true" class="bio-frame"></iframe>
+  </div>
 </div>

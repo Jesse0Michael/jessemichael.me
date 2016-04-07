@@ -5,7 +5,7 @@ name: home
 
 <div class="blog" ng-controller="HomeCtrl">
   {% raw %}
-  <div ng-repeat="item in items | orderBy:'-date'" id="box-{{item.id}}" class="blog-box color-box" style="{{item.style}}"
+  <div ng-repeat="item in items | orderBy:'-date'" id="box-{{item.id}}" class="blog-box color-box {{item.style}}"
     ng-class="{color:hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
     <div ng-bind-html="item.content"></div>
     <br />

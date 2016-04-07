@@ -3,7 +3,7 @@ layout: layout
 name: projects
 ---
 
-<div ng-controller="ProjectCtrl">
+<div ng-controller="ProjectCtrl" class="blog">
   {% raw %}
   <div ng-repeat="project in projects" id="{{project.id}}" class="box color-box"
     ng-class="{color:hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">

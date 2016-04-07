@@ -4,6 +4,7 @@
 		<title>Jesse Michael</title>
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="/css/base.css" />
+		<link rel="stylesheet" type="text/css" href="/css/mobile.css" />
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -19,7 +20,7 @@
 	<body ng-app="app">
 		<canvas id="boxes" width="500" height="135"></canvas>
 
-		<div ng-controller="ProjectCtrl">
+		<div ng-controller="ProjectCtrl" class="blog">
   
   <div ng-repeat="project in projects" id="{{project.id}}" class="box color-box"
     ng-class="{color:hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
