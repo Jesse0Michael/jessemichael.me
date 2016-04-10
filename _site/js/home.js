@@ -22,10 +22,10 @@ function HomeCtrl($scope, $http, $sce, tweets) {
           var content = "";
           if(data.type == "video") {
             var gramURL = data.videos.standard_resolution.url;
-            content = "<center><video id = \"" + data.id + "\" width='300' height='300'><source src = \"" + gramURL + "\" type='video/mp4'></video></center>";
+            content = "<center><video id = \"" + data.id + "\" width='100%' poster=\"" + data.images.low_resolution.url + "\"><source src = \"" + gramURL + "\" type='video/mp4'></video></center>";
           } else {
             var gramURL = data.images.standard_resolution.url;
-            content = "<center><img src = '" + gramURL + "' width='300' height='300'></center>";
+            content = "<center><img src = '" + gramURL + "' width='100%' ></center>";
           }
 
           var item = {
@@ -54,7 +54,7 @@ function HomeCtrl($scope, $http, $sce, tweets) {
           var data = resp.response.checkins.items[i]
           var content = ""
           if(data.photos.items.length > 0) {
-            content = "<center><img src = '" + data.photos.items[0].prefix + "300x300" + data.photos.items[0].suffix + "' ></center>"
+            content = "<center><img src = '" + data.photos.items[0].prefix + "300x300" + data.photos.items[0].suffix + "' width='100%' ></center>"
           }
 
           var item = {
@@ -64,8 +64,9 @@ function HomeCtrl($scope, $http, $sce, tweets) {
             style: $scope.smallWidth,
             content: $sce.trustAsHtml(content)
           }
-
-          $scope.items.push(item);
+          if(content != "") {
+            $scope.items.push(item);
+          }
         }
 			})
 	}
@@ -120,7 +121,7 @@ function HomeCtrl($scope, $http, $sce, tweets) {
             id: title,
             source: $sce.trustAsHtml("\"" + title + "\" On <a href = '" + data.guid.content + "' style='text-decoration: none' target='_top'>Deviant Art <img src = '/content/icons/deviantart2BW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: $scope.smallWidth,
-            content: $sce.trustAsHtml("<center><img src = '" + data.thumbnail.thumbnail.url + "' ></center>")
+            content: $sce.trustAsHtml("<center><img src = '" + data.thumbnail.thumbnail.url + "' width='100%' ></center>")
           }
 
           $scope.items.push(item)
