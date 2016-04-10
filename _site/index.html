@@ -24,11 +24,13 @@
   
   <div ng-repeat="item in items | orderBy:'-date'" id="box-{{item.id}}" class="blog-box color-box {{item.style}}"
     ng-class="{color:hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
-    <div ng-bind-html="item.content"></div>
-    <br />
-    <div class="blog-discript" ng-bind-html="item.source"></div>
-    <div class="blog-date">
-      {{item.date.toLocaleString('en-US')}}
+    <div class="box-wrapper">
+      <div ng-bind-html="item.content"></div>
+      <br />
+      <div class="blog-discript" ng-bind-html="item.source"></div>
+      <div class="blog-date">
+        {{item.date.toLocaleString('en-US')}}
+      </div>
     </div>
   </div>
   
