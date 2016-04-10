@@ -22,7 +22,7 @@ function HomeCtrl($scope, $http, $sce, tweets) {
           var content = "";
           if(data.type == "video") {
             var gramURL = data.videos.standard_resolution.url;
-            content = "<center><video id = \"" + data.id + "\" width='100%' poster=\"" + data.images.thumbnail.url + "\"><source src = \"" + gramURL + "\" type='video/mp4'></video></center>";
+            content = "<center><video id = \"" + data.id + "\" width='100%' poster=\"" + data.images.low_resolution.url + "\"><source src = \"" + gramURL + "\" type='video/mp4'></video></center>";
           } else {
             var gramURL = data.images.standard_resolution.url;
             content = "<center><img src = '" + gramURL + "' width='100%' ></center>";
