@@ -177,3 +177,8 @@ img {
 .pointer {
 	cursor: pointer;
 }
+
+.Emoji {
+	height:16px;
+	width:16px;
+}
