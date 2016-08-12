@@ -41,6 +41,7 @@ img {
 	text-align:left;
   display:inline-block;
   float:left;
+	word-wrap: break-word;
 }
 
 .small-box {

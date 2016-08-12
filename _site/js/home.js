@@ -80,9 +80,7 @@ function HomeCtrl($scope, $http, $sce, tweets) {
 
       for (var i in resp.data.tweets) {
         var data = resp.data.tweets[i]
-        console.log(data.author.avatar)
         var author = "<a href = '" + data.author.url + "' style='text-decoration: none' target='_top'><img class='twitter-avatar' src='" + data.author.avatar + "'> " + data.author.nickName + ": </a>"
-
 
         var item = {
           date: new Date(data.dateTime),

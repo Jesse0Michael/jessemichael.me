@@ -20,6 +20,7 @@
 	<body ng-app="app">
 		<canvas id="boxes" width="500" height="135"></canvas>
 
+
 		<div ng-controller="BioCtrl" class="blog">
   
   <div ng-repeat="bio in bios" id="{{bio.id}}" class="bio-box pointer color-box" ng-click="redirect(bio.url)"
@@ -47,5 +48,17 @@
 		<script type="text/javascript" src="/js/color.js"></script>
 		<script type="text/javascript" src="https://cdn.rawgit.com/moski/gist-Blogger/master/public/gistLoader.js"></script>
 		<script type="text/javascript" src="https://w.soundcloud.com/player/api.js"></script>
+		<script>
+			Boxes("#boxes", [{
+	      text: "HOME",
+	      path: "/"
+	    }, {
+	      text: "PROJECTS",
+	      path: "/projects"
+	    }, {
+	      text: "BIO",
+	      path: "/bio"
+	    }]);
+		</script>
 	</body>
 </html>
