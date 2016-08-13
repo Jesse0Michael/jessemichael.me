@@ -1,0 +1,73 @@
+.flip-horizontal {
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  -ms-filter: fliph; /*IE*/
+  filter: fliph; /*IE*/
+}
+
+#unicorn_1{
+  width:100px;
+  height:100px;
+  background-image:url('/content/public/unicorn_1.png');
+  z-index:1;
+  position:fixed;
+  left-200px;
+  top:400px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  visibility:hidden;
+}
+
+#unicorn_2{
+  width:100px;
+  height:100px;
+  background-image:url('/content/public/unicorn_2.png');
+  z-index:1;
+  position:fixed;
+  left-200px;
+  top:400px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  visibility:hidden;
+}
+
+#unicorn_3{
+  width:100px;
+  height:100px;
+  background-image:url('/content/public/unicorn_3.png');
+  z-index:1;
+  position:fixed;
+  left-200px;
+  top:400px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  visibility:hidden;
+}
+
+#unicorn_4{
+  width:100px;
+  height:100px;
+  background-image:url('/content/public/unicorn_4.png');
+  z-index:1;
+  position:fixed;
+  left-200px;
+  top:400px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  visibility:hidden;
+}
+
+.Rainbow{
+  width:100%;
+  height:100%;
+  z-index:-1;
+  position:fixed;
+  float:left;
+  left:0px;
+  top:400px;
+  background-image:url('/content/public/rainbow.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
