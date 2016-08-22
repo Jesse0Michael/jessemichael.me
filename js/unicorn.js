@@ -39,7 +39,7 @@ function fireLeft(unicornObject) {
 function fireRight(unicornObject) {
   var dest = Math.floor((Math.random() * 650)); // ending height
   var speed = Math.floor((Math.random() * 5000) + 2000); // time to get accross
-  var X = screen.width + 100;
+  var X = window.screen.width + 100;
 
   $('#' + unicornObject).animate({
     "top": dest + "px",
@@ -63,7 +63,7 @@ function FIRE(unicornObject, dir, height) {
   $('#' + unicornObject).css("visibility", "visible")
 
   if (dir == 1) {
-    var X = screen.width + 100;
+    var X = window.screen.width + 100;
     $('#' + unicornObject).css("left", X + "px")
     $('#' + unicornObject).css("top", height + "px");
     $('#' + unicornObject).removeClass("flip-horizontal");
