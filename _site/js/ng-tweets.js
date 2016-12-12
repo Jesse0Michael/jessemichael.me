@@ -72,10 +72,28 @@ function parse(data) {
         tweet.dateTime = el.getElementsByClassName('dt-updated')[0].getAttribute('datetime');
         tweet.permalink = el.getElementsByClassName('timeline-Tweet-timestamp')[0].getAttribute('href');
         if (el.getElementsByClassName('timeline-Tweet-media')[0]) {
+          removeStyles(el.getElementsByClassName('timeline-Tweet-media')[0])
           tweet.inlineMedia = el.getElementsByClassName('timeline-Tweet-media')[0].innerHTML;
         }
         response.tweets.push(tweet);
       }
     }
   return response;
+}
+
+
+function removeStyles(el) {
+    el.removeAttribute('style');
+    if(el.getAttribute('data-srcset') != null){
+      el.classList.add('lazyload');
+      el.setAttribute('data-srcset', decodeURIComponent(el.getAttribute('data-srcset')));
+    }
+
+    if(el.childNodes.length > 0) {
+        for(var child in el.childNodes) {
+            /* filter element nodes only */
+            if(el.childNodes[child].nodeType == 1)
+                removeStyles(el.childNodes[child]);
+        }
+    }
 }

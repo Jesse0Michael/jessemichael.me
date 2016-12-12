@@ -5,7 +5,7 @@
 	width:100%;
 	overflow-y:none;
 	padding:0px;
-	background: #F3F3F3;
+	background: #FFFFFF;
 }
 
 ul {
@@ -18,12 +18,14 @@ a {
 
 img {
     border-style: none;
+		max-width: 100%;
+		height: auto;
+		text-align: center;
 }
 
 .blog {
 	margin: auto;
 	width: 76%;
-	background-color: #F3F3F3;
   display:inline-block;
   text-align:center;
 }
@@ -190,4 +192,8 @@ img {
 	vertical-align: top;
 	float: left;
 	padding: 5px;
+}
+
+.twitter-media {
+	margin-top: 10px;
 }

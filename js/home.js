@@ -81,13 +81,16 @@ function HomeCtrl($scope, $http, $sce, tweets) {
       for (var i in resp.data.tweets) {
         var data = resp.data.tweets[i]
         var author = "<a href = '" + data.author.url + "' style='text-decoration: none' target='_top'><img class='twitter-avatar' src='" + data.author.avatar + "'> " + data.author.nickName + ": </a>"
-
+        var media = ""
+        if(data.inlineMedia != null) {
+          media = "<br/><div class='twitter-media'>" + data.inlineMedia + "</div>"
+        }
         var item = {
           date: new Date(data.dateTime),
           id: data.id,
           source: $sce.trustAsHtml("On <a href = '" + data.permalink + "' style='text-decoration: none' target='_top'>Twitter <img src = '/content/icons/twitterBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
           style: $scope.smallWidth,
-          content: $sce.trustAsHtml(author + data.html)
+          content: $sce.trustAsHtml(author + data.html + media)
         }
 
         $scope.items.push(item)
