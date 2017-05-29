@@ -31,7 +31,7 @@ function BioCtrl($scope, $window) {
     id: "linkedin",
     title: "Linked In",
     image: "/content/icons/linkedin.png",
-    url: "http://www.linkedin.com/pub/jesse-michael/4a/801/a14"
+    url: "http://www.linkedin.com/pub/jesse0michael"
   },{
     id: "soundcloud",
     title: "Sound Cloud",
@@ -57,6 +57,11 @@ function BioCtrl($scope, $window) {
     title: "YouTube",
     image: "/content/icons/youtube.png",
     url: "http://www.youtube.com/user/MiniMichael63"
+  },{
+    id: "itch",
+    title: "Itch.io",
+    image: "/content/icons/itch.png",
+    url: "https://raineystreetgames.itch.io/"
   }]
 
   $scope.redirect = function(url) {
