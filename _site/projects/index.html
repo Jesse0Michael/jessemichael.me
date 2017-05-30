@@ -18,9 +18,12 @@
 
 	</head>
 	<body ng-app="app">
-		<canvas id="boxes" width="500" height="135"></canvas>
-
-
+		<div class="topnav">
+			<a href="/">Home</a>
+			<a href="/projects">Projects</a>
+			<a href="/bio">Bio</a>
+		</div>
+		<canvas id="boxes" class="boxes"></canvas>
 		<div ng-controller="ProjectCtrl" class="blog">
   
   <div ng-repeat="project in projects" id="{{project.id}}" class="box color-box"
@@ -52,16 +55,17 @@
 		<script type="text/javascript" src="https://cdn.rawgit.com/moski/gist-Blogger/master/public/gistLoader.js"></script>
 		<script type="text/javascript" src="https://w.soundcloud.com/player/api.js"></script>
 		<script>
-			Boxes("#boxes", [{
-	      text: "HOME",
-	      path: "/"
-	    }, {
-	      text: "PROJECTS",
-	      path: "/projects"
-	    }, {
-	      text: "BIO",
-	      path: "/bio"
-	    }]);
+			// Boxes("#boxes", [{
+	    //   text: "HOME",
+	    //   path: "/"
+	    // }, {
+	    //   text: "PROJECTS",
+	    //   path: "/projects"
+	    // }, {
+	    //   text: "BIO",
+	    //   path: "/bio"
+	    // }]);
+  		Boxes("boxes", [], 255, 1, 40, 10);
 		</script>
 	</body>
 </html>

@@ -3,7 +3,6 @@ layout: layout
 name: bio
 ---
 
-
 <div ng-controller="BioCtrl" class="blog">
   {% raw %}
   <div ng-repeat="bio in bios" id="{{bio.id}}" class="bio-box pointer color-box" ng-click="redirect(bio.url)"

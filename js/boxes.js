@@ -1,5 +1,5 @@
-function Boxes(id, links, rgbDefault = 50, toSpeed = 20, fromSpeed = 1) {
-  var canvas = document.querySelector(id),
+function Boxes(canvasID, links, rgbDefault = 50, toSpeed = 20, fromSpeed = 1, animateCoefficient = 5) {
+  var canvas = document.getElementById(canvasID),
     con = canvas.getContext('2d'),
     mousePos = { x: 0, y: 0 },
     boxWidth = 35,
@@ -13,10 +13,10 @@ function Boxes(id, links, rgbDefault = 50, toSpeed = 20, fromSpeed = 1) {
       this.g = rgbDefault;
       this.b = rgbDefault;
     };
-  canvas.addEventListener("mousemove", function(evt) {
+  window.addEventListener("mousemove", function(evt) { 
     mousePos = getMousePos(canvas, evt);
   });
-  canvas.addEventListener("click", function(evt) {
+  window.addEventListener("click", function(evt) {
     mouseClicked = true;
   });
 
@@ -26,6 +26,7 @@ function Boxes(id, links, rgbDefault = 50, toSpeed = 20, fromSpeed = 1) {
   function resizeCanvas() {
     //min width = text box array size + border
     canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     shapes = new Array();
     var numRows = Math.floor((canvas.height - 20) / boxWidth);
     var numBoxes = Math.floor((canvas.width - 20) / (boxWidth + 5));
@@ -141,7 +142,7 @@ function Boxes(id, links, rgbDefault = 50, toSpeed = 20, fromSpeed = 1) {
 
     }
     mouseClicked = false;
-    setTimeout(animate, 5);
+    setTimeout(animate, animateCoefficient);
   }
   animate();
 

@@ -5,7 +5,6 @@
 	width:100%;
 	overflow-y:none;
 	padding:0px;
-	background: #FFFFFF;
 }
 
 ul {
@@ -21,6 +20,36 @@ img {
 		max-width: 100%;
 		height: auto;
 		text-align: center;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #666;
+    overflow: hidden;
+		font-family: calibri;
+    font-size: 24px;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.boxes {
+	z-index: -1; 
+	position: fixed; 
+	display: block;
 }
 
 .blog {
@@ -42,7 +71,7 @@ img {
 	vertical-align: middle;
 	text-align:left;
   display:inline-block;
-  float:left;
+	position: inherit;
 	word-wrap: break-word;
 }
 
@@ -64,8 +93,7 @@ img {
 }
 
 .box {
-	margin-left:auto;
-	margin-right:auto;
+	margin: 1% 3%;
 	margin-bottom: 50px;
 	background-color: #F8F8F8;
 	padding: 10px 30px;
