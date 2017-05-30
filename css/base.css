@@ -50,6 +50,10 @@ img {
     color: black;
 }
 
+.topnav-spacer {
+	height: 57px;
+}
+
 .boxes {
 	z-index: -1; 
 	position: fixed; 
