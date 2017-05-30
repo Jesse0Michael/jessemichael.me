@@ -42,6 +42,7 @@ img {
 
 .topnav img {
     float: left;
+		width: 28px;
     padding: 14px 16px;
 }
 
