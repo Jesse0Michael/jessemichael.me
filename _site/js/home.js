@@ -19,13 +19,14 @@ function HomeCtrl($scope, $http, $sce, tweets) {
 			.success(function (resp) {
         for (var i in resp.data) {
           var data = resp.data[i]
+          var caption = data.caption.text;
           var content = "";
           if(data.type == "video") {
             var gramURL = data.videos.standard_resolution.url;
-            content = "<center><video id = \"" + data.id + "\" width='100%' poster=\"" + data.images.low_resolution.url + "\"><source src = \"" + gramURL + "\" type='video/mp4'></video></center>";
+            content = "<center><video id = \"" + data.id + "\" width='100%' poster=\"" + data.images.low_resolution.url + "\"><source src = \"" + gramURL + "\" type='video/mp4'></video><br />" + caption + "</center>";
           } else {
             var gramURL = data.images.standard_resolution.url;
-            content = "<center><img src = '" + gramURL + "' width='100%' ></center>";
+            content = "<center><img src = '" + gramURL + "' width='100%' ><br />" + caption + "</center>";
           }
 
           var item = {
@@ -52,9 +53,10 @@ function HomeCtrl($scope, $http, $sce, tweets) {
 			.success(function (resp) {
         for (var i in resp.response.checkins.items) {
           var data = resp.response.checkins.items[i]
+
           var content = ""
           if(data.photos.items.length > 0) {
-            content = "<center><img src = '" + data.photos.items[0].prefix + "300x300" + data.photos.items[0].suffix + "' width='100%' ></center>"
+            content = "<center><img src = '" + data.photos.items[0].prefix + "300x300" + data.photos.items[0].suffix + "' width='100%' ><br />" + data.shout + "</center>"
           }
 
           var item = {
@@ -98,6 +100,58 @@ function HomeCtrl($scope, $http, $sce, tweets) {
     })
 	}
 	fetchTwitter();
+
+  function fetchTwitter2() {
+
+    var configProfile = {
+      "id": "714647134084050945",
+      "profile": {"screenName": 'jesse0michael'},
+      "domId": 'exampleProfile',
+      "maxTweets": 20,
+      "enableLinks": true, 
+      "showUser": true,
+      "showTime": true,
+      "showImages": true,
+      "lang": 'en'
+    };
+    var resp = twitterFetcher.fetch(configProfile);
+    console.log(resp);
+    //TODO do the work here.. in callback
+		// var params = {
+    //   url: "https://twitter.com/jesse0michael",
+    //   lang: "en",
+    //   suppress_response_codes: true,
+    //   rnd: Math.random(),
+    //   callback: "JSON_CALLBACK"
+		// }
+		// $http("https://publish.twitter.com/oembed", { params: params })
+		// 	.success(function (resp) {
+        for (var i in resp.data) {
+          var data = resp.data[i]
+          var caption = data.caption.text;
+          var content = "";
+          if(data.type == "video") {
+            var gramURL = data.videos.standard_resolution.url;
+            content = "<center><video id = \"" + data.id + "\" width='100%' poster=\"" + data.images.low_resolution.url + "\"><source src = \"" + gramURL + "\" type='video/mp4'></video><br />" + caption + "</center>";
+          } else {
+            var gramURL = data.images.standard_resolution.url;
+            content = "<center><img src = '" + gramURL + "' width='100%' ><br />" + caption + "</center>";
+          }
+
+          var item = {
+            date: new Date(data.created_time * 1000),
+            id: data.id,
+            source: $sce.trustAsHtml("On <a href = '" + data.link + "' style='text-decoration: none' target='_top'>Instagram <img src = '/content/icons/instagramBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
+            style: $scope.smallWidth,
+            content: $sce.trustAsHtml(content)
+          }
+
+          $scope.items.push(item);
+        }
+			// })
+	}
+  
+	// fetchTwitter2();
 
   function fetchDeviantArt() {
     // Parse Deviantart RSS feed and get past CORS through https://developer.yahoo.com/yql/

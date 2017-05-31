@@ -1,15 +1,10 @@
 @media (max-width: 1120px) {
-    .topnav {
-      font-size: 72px;
-  }
-
-  .topnav a {
-      padding: 14px 16px;
+  .topnav {
+    font-size: 72px;
   }
 
   .topnav img {
-      padding: 14px 16px;
-      width: 84px;
+    width: 84px;
   }
 
   .topnav-spacer {

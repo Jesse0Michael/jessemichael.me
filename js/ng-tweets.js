@@ -18,17 +18,23 @@ angular.module('ngTweets', [])
     };
   });
 
+var __twttrf = {
+  callback: function(resp) {
+    return parse(resp);
+  }
+}
+
 function trim(request) {
   return request.data.tweets;
 }
 
 function url(id, lang) {
   return [
-    'http://cdn.syndication.twimg.com/widgets/timelines/',
+    'https://cdn.syndication.twimg.com/widgets/timelines/',
     id,
     '?&lang=',
     (lang || 'en'),
-    '&callback=JSON_CALLBACK',
+    '&callback=__twttrf.callback',
     '&suppress_response_codes=true&rnd=',
     Math.random()
   ].join('');
