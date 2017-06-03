@@ -1,18 +1,32 @@
 var app = angular.module('app',['ngAnimate', 'colorBoxes']);
 
-HomeCtrl.$inject = ['$scope', '$http', '$sce'];
+HomeCtrl.$inject = ['$scope', '$http', '$sce', '$window'];
 app.controller('HomeCtrl', HomeCtrl);
 
-function HomeCtrl($scope, $http, $sce) {
+function HomeCtrl($scope, $http, $sce, $window) {
   $scope.items = []
-  $scope.count = 12
+  $scope.count = 20
   $scope.smallWidth = "small-box"
   $scope.largeWidth = "large-box"
+  $scope.totalDisplayed = 10
+
+  $scope.loadMore = function () {
+    $scope.totalDisplayed += 10;  
+  };
+
+  angular.element($window).bind("scroll", function() {
+    var windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+    var body = document.body, html = document.documentElement;
+    var docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
+    windowBottom = windowHeight + window.pageYOffset;
+    if (windowBottom >= docHeight) {
+      $scope.$apply($scope.loadMore());   
+    }
+  }); 
 
 	function fetchInstagram() {
 		var params = {
 			access_token: "50957893.c4c5a38.45731381623a4ddd86c042851d4d317f",
-      count: $scope.count,
       callback: "JSON_CALLBACK"
 		}
 		$http.jsonp("https://api.instagram.com/v1/users/50957893/media/recent/", { params: params })
@@ -46,7 +60,6 @@ function HomeCtrl($scope, $http, $sce) {
   function fetchSwarm() {
 		var params = {
 			oauth_token: "OU2LAHV5RHIWU22OSUUA2QRXAWYWDISJBCY2SS5ANH41PRXS",
-      limit: $scope.count,
       v: 20140806
 		}
 		$http.get("https://api.foursquare.com/v2/users/self/checkins", { params: params })
@@ -163,7 +176,7 @@ function HomeCtrl($scope, $http, $sce) {
   function fetchSoundCloud() {
 		var params = {
       client_id: "f330c0bb90f1c89a15e78ece83e21856",
-      limit: $scope.count = 12
+      limit: $scope.count
 		}
     $http.get("http://api.soundcloud.com/users/20560365/favorites", { params: params })
 			.success(function (resp) {
