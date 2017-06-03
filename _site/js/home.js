@@ -1,9 +1,9 @@
-var app = angular.module('app',['ngAnimate', 'colorBoxes', 'ngTweets']);
+var app = angular.module('app',['ngAnimate', 'colorBoxes']);
 
-HomeCtrl.$inject = ['$scope', '$http', '$sce', 'tweets'];
+HomeCtrl.$inject = ['$scope', '$http', '$sce'];
 app.controller('HomeCtrl', HomeCtrl);
 
-function HomeCtrl($scope, $http, $sce, tweets) {
+function HomeCtrl($scope, $http, $sce) {
   $scope.items = []
   $scope.count = 12
   $scope.smallWidth = "small-box"
