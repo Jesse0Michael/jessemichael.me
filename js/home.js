@@ -75,83 +75,34 @@ function HomeCtrl($scope, $http, $sce, tweets) {
 	fetchSwarm();
 
   function fetchTwitter() {
-    //https://github.com/forwardadvance/ng-tweets
-    tweets.get({
-      widgetId: '714647134084050945'
-    }).then(function(resp) {
-
-      for (var i in resp.data.tweets) {
-        var data = resp.data.tweets[i]
-        var author = "<a href = '" + data.author.url + "' style='text-decoration: none' target='_top'><img class='twitter-avatar' src='" + data.author.avatar + "'> " + data.author.nickName + ": </a>"
-        var media = ""
-        if(data.inlineMedia != null) {
-          media = "<br/><div class='twitter-media'>" + data.inlineMedia + "</div>"
-        }
-        var item = {
-          date: new Date(data.dateTime),
-          id: data.id,
-          source: $sce.trustAsHtml("On <a href = '" + data.permalink + "' style='text-decoration: none' target='_top'>Twitter <img src = '/content/icons/twitterBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
-          style: $scope.smallWidth,
-          content: $sce.trustAsHtml(author + data.html + media)
-        }
-
-        $scope.items.push(item)
+    var params = {
+      lang: "en",
+      suppress_response_codes: true,
+      rnd: Math.random(),
+      callback: "__twttrf.callback"
+		}
+		$http.jsonp("https://cdn.syndication.twimg.com/widgets/timelines/714647134084050945", { params: params })
+	}
+  $scope.appendTwitter = function(widget) {
+    for (var i in widget.tweets) {
+      var data = widget.tweets[i]
+      var author = "<a href = '" + data.author.url + "' style='text-decoration: none' target='_top'><img class='twitter-avatar' src='" + data.author.avatar + "'> " + data.author.nickName + ": </a>"
+      var media = ""
+      if(data.inlineMedia != null) {
+        media = "<br/><div class='twitter-media'>" + data.inlineMedia + "</div>"
       }
-    })
-	}
+      var item = {
+        date: new Date(data.dateTime),
+        id: data.id,
+        source: $sce.trustAsHtml("On <a href = '" + data.permalink + "' style='text-decoration: none' target='_top'>Twitter <img src = '/content/icons/twitterBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
+        style: $scope.smallWidth,
+        content: $sce.trustAsHtml(author + data.html + media)
+      }
+
+      $scope.items.push(item)
+    }
+  }
 	fetchTwitter();
-
-  function fetchTwitter2() {
-
-    var configProfile = {
-      "id": "714647134084050945",
-      "profile": {"screenName": 'jesse0michael'},
-      "domId": 'exampleProfile',
-      "maxTweets": 20,
-      "enableLinks": true, 
-      "showUser": true,
-      "showTime": true,
-      "showImages": true,
-      "lang": 'en'
-    };
-    var resp = twitterFetcher.fetch(configProfile);
-    console.log(resp);
-    //TODO do the work here.. in callback
-		// var params = {
-    //   url: "https://twitter.com/jesse0michael",
-    //   lang: "en",
-    //   suppress_response_codes: true,
-    //   rnd: Math.random(),
-    //   callback: "JSON_CALLBACK"
-		// }
-		// $http("https://publish.twitter.com/oembed", { params: params })
-		// 	.success(function (resp) {
-        for (var i in resp.data) {
-          var data = resp.data[i]
-          var caption = data.caption.text;
-          var content = "";
-          if(data.type == "video") {
-            var gramURL = data.videos.standard_resolution.url;
-            content = "<center><video id = \"" + data.id + "\" width='100%' poster=\"" + data.images.low_resolution.url + "\"><source src = \"" + gramURL + "\" type='video/mp4'></video><br />" + caption + "</center>";
-          } else {
-            var gramURL = data.images.standard_resolution.url;
-            content = "<center><img src = '" + gramURL + "' width='100%' ><br />" + caption + "</center>";
-          }
-
-          var item = {
-            date: new Date(data.created_time * 1000),
-            id: data.id,
-            source: $sce.trustAsHtml("On <a href = '" + data.link + "' style='text-decoration: none' target='_top'>Instagram <img src = '/content/icons/instagramBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
-            style: $scope.smallWidth,
-            content: $sce.trustAsHtml(content)
-          }
-
-          $scope.items.push(item);
-        }
-			// })
-	}
-  
-	// fetchTwitter2();
 
   function fetchDeviantArt() {
     // Parse Deviantart RSS feed and get past CORS through https://developer.yahoo.com/yql/
@@ -233,4 +184,74 @@ function HomeCtrl($scope, $http, $sce, tweets) {
 	}
 	fetchSoundCloud();
 
+}
+
+var __twttrf = {
+  callback: function(resp) {
+    var widget = parseWidget(resp);
+    angular.element(document.getElementById('home')).scope().appendTwitter(widget);
+  }
+}
+
+function parseWidget(data) {
+  var response = {
+    headers: data.headers,
+    tweets: []
+  },
+  els,
+  el,
+  tweet,
+  x,
+  tmp;
+
+  if (data.body) {
+    els = angular.element(data.body)[0].getElementsByClassName('timeline-Tweet');
+    for (x = 0; x < els.length; x++) {
+      el = els[x];
+      tweet = {};
+      tweet.retweet = (el.getElementsByClassName('timeline-Tweet-retweetCredit').length > 0);
+      tweet.id = el.getAttribute('data-tweet-id');
+      tmp = el.getElementsByClassName('timeline-Tweet-text')[0];
+      tweet.html = tmp.innerHTML;
+      tweet.text = tmp.textContent || tmp.innerText; // IE8 doesn't support textContent
+      tmp = el.getElementsByClassName('timeline-Tweet-author')[0];
+      tweet.author = {
+        url: tmp.getElementsByClassName('TweetAuthor-link')[0].getAttribute('href'),
+        avatar: tmp.getElementsByClassName('Avatar')[0].getAttribute('data-src-1x'),
+        fullName: tmp.getElementsByClassName('TweetAuthor-name')[0].innerText,
+        nickName: tmp.getElementsByClassName('TweetAuthor-screenName')[0].innerText
+      };
+      tweet.updated = el.getElementsByClassName('dt-updated')[0].innerText;
+      tweet.dateTime = el.getElementsByClassName('dt-updated')[0].getAttribute('datetime');
+      tweet.permalink = el.getElementsByClassName('timeline-Tweet-timestamp')[0].getAttribute('href');
+      if (el.getElementsByClassName('timeline-Tweet-media')[0]) {
+        var elements = el.getElementsByClassName('Interstitial');
+        while(elements.length > 0){
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+        removeStyles(el.getElementsByClassName('timeline-Tweet-media')[0])
+        tweet.inlineMedia = el.getElementsByClassName('timeline-Tweet-media')[0].innerHTML;
+      }
+
+      response.tweets.push(tweet);
+    }
+  }
+  return response;
+}
+
+
+function removeStyles(el) {
+  el.removeAttribute('style');
+  if(el.getAttribute('data-srcset') != null){
+    el.classList.add('lazyload');
+    el.setAttribute('data-srcset', decodeURIComponent(el.getAttribute('data-srcset')));
+  }
+
+  if(el.childNodes.length > 0) {
+    for(var child in el.childNodes) {
+      /* filter element nodes only */
+      if(el.childNodes[child].nodeType == 1)
+        removeStyles(el.childNodes[child]);
+    }
+  }
 }

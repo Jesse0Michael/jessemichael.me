@@ -26,7 +26,7 @@
 		</div>
 		<div class="topnav-spacer"></div>
 		<canvas id="boxes" class="boxes"></canvas>
-		<div class="blog" ng-controller="HomeCtrl">
+		<div id="home" class="blog" ng-controller="HomeCtrl">
   
   <div ng-repeat="item in items | orderBy:'-date'" id="box-{{item.id}}" class="blog-box color-box {{item.style}}"
     ng-class="{color:hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
@@ -46,7 +46,6 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-		<script type="text/javascript" src="/js/ng-tweets.js"></script>
     <script type="text/javascript" src="/js/boxes.js"></script>
 		<script type="text/javascript" src="/js/home.js"></script>
 		<script type="text/javascript" src="/js/project.js"></script>
