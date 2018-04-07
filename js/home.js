@@ -141,7 +141,7 @@ function HomeCtrl($scope, $http, $sce, $window) {
           var title = urlParts[urlParts.length - 1].split("-")[0]
 
           var item = {
-            date: new Date(data.pubdate),
+            date: new Date(data.pubDate),
             id: title,
             source: $sce.trustAsHtml("\"" + title + "\" On <a href = '" + data.guid.content + "' style='text-decoration: none' target='_top'>Deviant Art <img src = '/content/icons/deviantart2BW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: $scope.smallWidth,
