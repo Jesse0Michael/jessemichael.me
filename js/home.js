@@ -92,7 +92,9 @@ function HomeCtrl($scope, $http, $sce, $window) {
       lang: "en",
       suppress_response_codes: true,
       rnd: Math.random(),
-      callback: "__twttrf.callback"
+      callback: "__twttrf.callback",
+      dnt:false,
+      list_slug:""
 		}
 		$http.jsonp("https://cdn.syndication.twimg.com/widgets/timelines/714647134084050945", { params: params })
 	}
@@ -101,8 +103,12 @@ function HomeCtrl($scope, $http, $sce, $window) {
       var data = widget.tweets[i]
       var author = "<a href = '" + data.author.url + "' style='text-decoration: none' target='_top'><img class='twitter-avatar' src='" + data.author.avatar + "'> " + data.author.nickName + ": </a>"
       var media = ""
-      if(data.inlineMedia != null) {
-        media = "<br/><div class='twitter-media'>" + data.inlineMedia + "</div>"
+      if(data.media != null && data.media.length > 0) {
+        media = "<br/><div class='twitter-media'>"
+        for (var i in data.media) {
+          media += "<a href = '" + data.permalink + "' target='_top'><img src = '" + data.media[i] + ".png' width='100%' ></a>"
+        }
+        media += "</div>"
       }
       var item = {
         date: new Date(data.dateTime),
@@ -121,16 +127,16 @@ function HomeCtrl($scope, $http, $sce, $window) {
     // Parse Deviantart RSS feed and get past CORS through https://developer.yahoo.com/yql/
     var url = "http://backend.deviantart.com/rss.xml?q=gallery:mini-michael/33242408"
     var params = {
-			q: "select * from html where url='" + url + "'",
+			q: "select * from rss where url='" + url + "'",
       format: "json",
       env: "store://datatables.org/alltableswithkeys"
 		}
 
     $http.get("https://query.yahooapis.com/v1/public/yql", { params: params })
 			.success(function (resp) {
-        var count = Math.min(resp.query.results.body.rss.channel.item.length, $scope.count)
+        var count = Math.min(resp.query.results.item.length, $scope.count)
         for (var i = 0; i < count; i++) {
-          var data = resp.query.results.body.rss.channel.item[i]
+          var data = resp.query.results.item[i]
           var urlParts = data.guid.content.split("/")
           var title = urlParts[urlParts.length - 1].split("-")[0]
 
@@ -139,7 +145,7 @@ function HomeCtrl($scope, $http, $sce, $window) {
             id: title,
             source: $sce.trustAsHtml("\"" + title + "\" On <a href = '" + data.guid.content + "' style='text-decoration: none' target='_top'>Deviant Art <img src = '/content/icons/deviantart2BW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: $scope.smallWidth,
-            content: $sce.trustAsHtml("<center><img src = '" + data.thumbnail.thumbnail.url + "' width='100%' ></center>")
+            content: $sce.trustAsHtml("<center><img src = '" + data.thumbnail[data.thumbnail.length-1].url + "' width='100%' ></center>")
           }
 
           $scope.items.push(item)
@@ -244,6 +250,7 @@ function parseWidget(data) {
         }
         removeStyles(el.getElementsByClassName('timeline-Tweet-media')[0])
         tweet.inlineMedia = el.getElementsByClassName('timeline-Tweet-media')[0].innerHTML;
+        tweet.media = findAttribute(el.getElementsByClassName('timeline-Tweet-media')[0], 'data-image');
       }
 
       response.tweets.push(tweet);
@@ -252,6 +259,20 @@ function parseWidget(data) {
   return response;
 }
 
+function findAttribute(el, attr) {
+  var found = [];
+  if(el.getAttribute(attr) != null){
+    found.push(el.getAttribute(attr));
+  }
+
+  if(el.childNodes.length > 0) {
+    for(var child in el.childNodes) {
+      if(el.childNodes[child].nodeType == 1)
+        found = found.concat(findAttribute(el.childNodes[child], attr));
+    }
+  }
+  return found
+}
 
 function removeStyles(el) {
   el.removeAttribute('style');
