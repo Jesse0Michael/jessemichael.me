@@ -1,0 +1,51 @@
+@media (max-width: 1120px) {
+  .topnav {
+    font-size: 72px;
+  }
+
+  .topnav img {
+    width: 84px;
+  }
+
+  .topnav-spacer {
+    height: 116px;
+  }
+
+  .blog {
+  	width: 100%;
+  }
+
+  .blog-box {
+    margin: auto;
+  	width: 100%;
+    padding: inherit;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  .box {
+    margin: auto;
+    padding: inherit;
+  	width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  .box-wrapper {
+    width: 90%;
+    margin: auto;
+    padding: 1% 0%;
+  }
+
+  .bio-box {
+  	margin: 1% auto;
+  	width: 80%;
+    float: inherit;
+  }
+
+  .bio-frame {
+    width: 100%;
+  }
+}

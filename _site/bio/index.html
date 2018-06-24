@@ -4,6 +4,7 @@
 		<title>Jesse Michael</title>
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="/css/base.css" />
+		<link rel="stylesheet" type="text/css" href="/css/mobile.css" />
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -17,68 +18,54 @@
 
 	</head>
 	<body ng-app="app">
-		<canvas id="boxes" width="500" height="135"></canvas>
-
-		<div class="box">
-    <p class="discript">Around the Web</p>
-    <br />
-    <div class="bio-column-1">
-        <a href="http://www.facebook.com/jesse0michael" target="_top">
-            <img src="/content/icons/facebook.png" align="absmiddle" height="25" width="25" hspace="15" />Facebook
-
-        </a>
-        <br /><br />
-        <a href="https://github.com/Jesse0Michael" target="_top">
-            <img src="/content/icons/github.png" align="absmiddle" height="25" width="25" hspace="15" />Git Hub
-
-        </a>
-        <br /><br />
-        <a href="http://www.youtube.com/user/MiniMichael63" target="_top">
-            <img src="/content/icons/youtube.png" align="absmiddle" height="25" width="25" hspace="15" />YouTube
-
-        </a>
-        <br /><br />
-        <a href="http://mini-michael.deviantart.com/" target="_top">
-            <img src="/content/icons/deviantart2.png" align="absmiddle" height="25" width="25" hspace="15" />Deviant Art
-
-        </a>
-        <br style="clear: both;" />
+		<div class="topnav">
+			<img src="/content/icons/jesseW.png" />
+			<a href="/">Home</a>
+			<a href="/projects">Projects</a>
+			<a href="/bio">Bio</a>
+		</div>
+		<div class="topnav-spacer"></div>
+		<canvas id="boxes" class="boxes"></canvas>
+		<div ng-controller="BioCtrl" class="blog">
+  
+  <div ng-repeat="bio in bios" id="{{bio.id}}" class="bio-box pointer color-box" ng-click="redirect(bio.url)"
+    ng-class="{color:hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
+      <span>
+          <img ng-src="{{bio.image}}" align="absmiddle" height="25" width="25"> &nbsp;&nbsp; {{bio.title}}
+      </span>
     </div>
-    <div class="bio-column-2">
-        <a href="http://twitter.com/#!/Jesse0Michael" target="_top">
-            <img src="/content/icons/twitter.png" align="absmiddle" height="25" width="25" hspace="15" />Twitter
-
-        </a>
-        <br /><br />
-        <a href="http://jesse0michael.blogspot.com/" target="_top">
-            <img src="/content/icons/blogger.png" align="absmiddle" height="25" width="25" hspace="15" />Blog
-
-        </a>
-        <br /><br />
-        <a href="http://www.linkedin.com/pub/jesse-michael/4a/801/a14" target="_top">
-            <img src="/content/icons/linkedin.png" align="absmiddle" height="25" width="25" hspace="15" />Linked In
-
-        </a>
-
-    </div>
-    <br /><br />
-
-</div>
-
-
-<div class="box">
-    <p class="discript">Resume</p>
-    <div id="contents" style="text-align:center;">
-        <iframe src="https://docs.google.com/document/d/1wkyLrtQeuoOCQ5AmR25te1_PJQm02bjJpBkdKS5o4pE/pub?embedded=true" style="width:860px; height:2150px;"></iframe>
-
-    </div>
-
+  
+  <br /><br />
+  <div id="contents" style="text-align:center;">
+      <iframe src="https://docs.google.com/document/d/1wkyLrtQeuoOCQ5AmR25te1_PJQm02bjJpBkdKS5o4pE/pub?embedded=true" class="bio-frame"></iframe>
+  </div>
 </div>
 
 
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     <script type="text/javascript" src="/js/boxes.js"></script>
 		<script type="text/javascript" src="/js/home.js"></script>
+		<script type="text/javascript" src="/js/project.js"></script>
+		<script type="text/javascript" src="/js/bio.js"></script>
+		<script type="text/javascript" src="/js/color.js"></script>
+		<!-- https://github.com/aFarkas/lazysizes -->
+		<script type="text/javascript" src="/js/lazysizes.min.js"></script>
+		<script type="text/javascript" src="https://cdn.rawgit.com/moski/gist-Blogger/master/public/gistLoader.js"></script>
+		<script type="text/javascript" src="https://w.soundcloud.com/player/api.js"></script>
+		<script>
+			// Boxes("#boxes", [{
+	    //   text: "HOME",
+	    //   path: "/"
+	    // }, {
+	    //   text: "PROJECTS",
+	    //   path: "/projects"
+	    // }, {
+	    //   text: "BIO",
+	    //   path: "/bio"
+	    // }]);
+  		Boxes("boxes", [], 255, 1, 40, 10);
+		</script>
 	</body>
 </html>

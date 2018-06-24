@@ -1,67 +1,39 @@
-$(document).ready(function() {(function() {
-  var canvas = document.querySelector('#boxes'),
+function Boxes(canvasID, links, rgbDefault = 50, toSpeed = 20, fromSpeed = 1, animateCoefficient = 5) {
+  var canvas = document.getElementById(canvasID),
     con = canvas.getContext('2d'),
-    cwidth = canvas.width,
-    cheight = canvas.height,
-    mousePos = {
-      x: 0,
-      y: 0
-    },
-    mouseClicked = false,
-    toSpeed = 20,
-    fromSpeed = 1,
+    mousePos = { x: 0, y: 0 },
     boxWidth = 35,
     linkBoxWidth = boxWidth * 3 + 10,
-    links = [{
-      text: "HOME",
-      path: "/"
-    }, {
-      text: "PROJECTS",
-      path: "/projects"
-    }, {
-      text: "BIO",
-      path: "/bio"
-    }],
-    play = true,
     Shape = function(x, y, width, height) {
       this.x = x;
       this.y = y;
       this.width = width;
       this.height = height;
-      this.rgbDefault = 50;
-      this.r = this.rgbDefault;
-      this.g = this.rgbDefault;
-      this.b = this.rgbDefault;
-      this.rTarget = this.rgbDefault;
-      this.gTarget = this.rgbDefault;
-      this.bTarget = this.rgbDefault;
-      this.enabled = false;
-      this.text = null;
-      this.path = null;
-    },
-    shapes = new Array();
-  canvas.addEventListener("mousemove", function(evt) {
+      this.r = rgbDefault;
+      this.g = rgbDefault;
+      this.b = rgbDefault;
+    };
+  window.addEventListener("mousemove", function(evt) { 
     mousePos = getMousePos(canvas, evt);
   });
-  canvas.addEventListener("click", function(evt) {
+  window.addEventListener("click", function(evt) {
     mouseClicked = true;
-  }, false);
+  });
 
   // resize the canvas to fill browser window dynamically
-  window.addEventListener('resize', resizeCanvas, false);
+  window.addEventListener('resize', resizeCanvas);
 
   function resizeCanvas() {
     //min width = text box array size + border
-    cwidth = canvas.width = window.innerWidth;
-    //cheight = canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     shapes = new Array();
-    var rows = 3;
+    var numRows = Math.floor((canvas.height - 20) / boxWidth);
     var numBoxes = Math.floor((canvas.width - 20) / (boxWidth + 5));
     var offset = ((canvas.width - 30) % (boxWidth + 5) / 2) + 10;
     var linkIdxs = getLinkIdxs(links.length, numBoxes);
 
-
-    for (var r = 0; r < rows; r++) {
+    for (var r = 0; r < numRows; r++) {
       for (var i = 0; i < numBoxes; i++) {
         var linkIdx = indexOf(linkIdxs, i);
         if (r == 1 && linkIdx != -1) {
@@ -122,7 +94,7 @@ $(document).ready(function() {(function() {
   }
 
   function animate() {
-    con.clearRect(0, 0, cwidth, cheight);
+    con.clearRect(0, 0, canvas.width, canvas.height);
 
 		// Debug
     // con.font = "8px Verdana";
@@ -138,9 +110,9 @@ $(document).ready(function() {(function() {
         mousePos.y <= tmp.y + tmp.height) {
         if (!tmp.enabled) {
           tmp.enabled = true;
-          tmp.rTarget = Math.round(Math.random() * 205) + 50;
-          tmp.gTarget = Math.round(Math.random() * 205) + 50;
-          tmp.bTarget = Math.round(Math.random() * 205) + 50;
+          tmp.rTarget = Math.round(Math.random() * 255) + 50;
+          tmp.gTarget = Math.round(Math.random() * 255) + 50;
+          tmp.bTarget = Math.round(Math.random() * 255) + 50;
         }
         if (tmp.path != null && mouseClicked) {
           window.location = tmp.path;
@@ -148,9 +120,9 @@ $(document).ready(function() {(function() {
       } else {
         if (tmp.enabled) {
           tmp.enabled = false;
-          tmp.rTarget = tmp.rgbDefault;
-          tmp.gTarget = tmp.rgbDefault;
-          tmp.bTarget = tmp.rgbDefault;
+          tmp.rTarget = rgbDefault;
+          tmp.gTarget = rgbDefault;
+          tmp.bTarget = rgbDefault;
         }
       }
 
@@ -170,9 +142,7 @@ $(document).ready(function() {(function() {
 
     }
     mouseClicked = false;
-    if (play) {
-      setTimeout(animate, 5);
-    }
+    setTimeout(animate, animateCoefficient);
   }
   animate();
 
@@ -200,6 +170,4 @@ $(document).ready(function() {(function() {
     }
     return current;
   }
-
-  })();
-});
+}
