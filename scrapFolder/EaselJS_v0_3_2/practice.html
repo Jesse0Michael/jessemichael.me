@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>HTML5 Practice</title>
+
+<script src="http://jessemichael.me/scrapFolder/EaselJS_v0_3_2/src/easeljs/utils/UID.js"></script>
+<script src="http://jessemichael.me/scrapFolder/EaselJS_v0_3_2/src/easeljs/geom/Matrix2D.js"></script>
+<script src="http://jessemichael.me/scrapFolder/EaselJS_v0_3_2/src/easeljs/display/DisplayObject.js"></script>
+<script src="http://jessemichael.me/scrapFolder/EaselJS_v0_3_2/src/easeljs/display/Container.js"></script>
+<script src="http://jessemichael.me/scrapFolder/EaselJS_v0_3_2/src/easeljs/display/Stage.js"></script>
+<script src="http://jessemichael.me/scrapFolder/EaselJS_v0_3_2/src/easeljs/display/Bitmap.js"></script>
+<script src="http://jessemichael.me/scrapFolder/EaselJS_v0_3_2/src/easeljs/utils/Ticker.js"></script>
+<script>
+
+	
+var KEYCODE_W = 87;			
+var KEYCODE_A = 65;			
+var KEYCODE_D = 68;	
+var KEYCODE_S = 83;
+
+var canvas;
+var stage;
+
+var left;
+var right;
+var down;
+var up;
+
+var xPos;
+var yPos;
+
+var speed;
+
+var context;
+
+var myImage;
+var bitmap;
+
+
+
+
+
+document.onkeydown = handleKeyDown;
+document.onkeyup = handleKeyUp;
+
+function init() {
+	canvas = document.getElementById("myCanvas");
+	stage = new Stage(canvas);
+	context = canvas.getContext('2d');
+	myImage = new Image();
+	myImage.src = "http://jessemichael.me/scrapFolder/reddit.png";
+	bitmap = new Bitmap(myImage);
+	xPos = 250;
+	yPos = 175;
+	
+	speed = 15;
+	
+	bitmap.x = xPos;
+	bitmap.y = yPos;
+	stage.addChild(bitmap);
+	
+	Ticker.setInterval(100);
+	
+	Ticker.addListener(window);
+	
+}
+
+function handleKeyDown(e) {
+	if(!e){ var e = window.event; }
+	switch(e.keyCode) {
+		case KEYCODE_A: 	left = true; break;
+		case KEYCODE_D:		right = true; break;
+		case KEYCODE_W:		up = true; break;
+		case KEYCODE_S:		down = true; break;
+	}
+}
+
+function handleKeyUp(e) {
+	if(!e){ var e = window.event; }
+	switch(e.keyCode) {
+		case KEYCODE_A: 	left = false; break;
+		case KEYCODE_D:		right = false; break;
+		case KEYCODE_W:		up = false; break;
+		case KEYCODE_S:		down = false; break;
+	}
+}
+
+function tick() {
+	
+	if(left == true &&  xPos >= 0)
+	{
+		xPos -= speed;	
+	}
+	if(right == true &&  xPos <= canvas.width - 50)
+	{
+		xPos += speed;	
+	}
+	if(up == true &&  yPos >= 0)
+	{
+		yPos -= speed;	
+	}
+	if(down == true &&  yPos <= canvas.height - 50)
+	{
+		yPos += speed;	
+	}
+	
+	bitmap.x = xPos;
+	bitmap.y = yPos;
+	
+	
+	//context.drawImage(myImage, 20, 20);
+	stage.update();
+}
+</script>
+
+<style>
+
+
+#myCanvas {
+
+
+
+border:dotted;
+
+}
+
+#holdme {
+margin-left: auto;
+margin-right:auto;
+text-align: center;
+}
+
+
+</style>
+</head>
+
+<body onload="init();">
+
+
+<div id="holdme">
+<canvas id = "myCanvas"  width="600" height="400"></canvas>
+</div>
+</body>
+</html>
