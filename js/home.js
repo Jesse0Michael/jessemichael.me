@@ -46,7 +46,7 @@ function HomeCtrl($scope, $http, $sce, $window) {
           var item = {
             date: new Date(data.created_time * 1000),
             id: data.id,
-            source: $sce.trustAsHtml("On <a href = '" + data.link + "' style='text-decoration: none' target='_top'>Instagram <img src = '/content/icons/instagramBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
+            source: $sce.trustAsHtml("On <a href = '" + data.link + "' style='text-decoration: none' target='_top'>Instagram <img src = '/jessemichael.me/content/icons/instagramBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: $scope.smallWidth,
             content: $sce.trustAsHtml(content)
           }
@@ -75,7 +75,7 @@ function HomeCtrl($scope, $http, $sce, $window) {
           var item = {
             date: new Date(data.createdAt * 1000),
             id: data.id,
-            source: $sce.trustAsHtml("At " + data.venue.name + " On <a href = '" + data.source.url + "' style='text-decoration: none' target='_top'>Swarm <img src = '/content/icons/swarmBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
+            source: $sce.trustAsHtml("At " + data.venue.name + " On <a href = '" + data.source.url + "' style='text-decoration: none' target='_top'>Swarm <img src = '/jessemichael.me/content/icons/swarmBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: $scope.smallWidth,
             content: $sce.trustAsHtml(content)
           }
@@ -113,7 +113,7 @@ function HomeCtrl($scope, $http, $sce, $window) {
       var item = {
         date: new Date(data.dateTime),
         id: data.id,
-        source: $sce.trustAsHtml("On <a href = '" + data.permalink + "' style='text-decoration: none' target='_top'>Twitter <img src = '/content/icons/twitterBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
+        source: $sce.trustAsHtml("On <a href = '" + data.permalink + "' style='text-decoration: none' target='_top'>Twitter <img src = '/jessemichael.me/content/icons/twitterBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
         style: $scope.smallWidth,
         content: $sce.trustAsHtml(author + data.html + media)
       }
@@ -143,7 +143,7 @@ function HomeCtrl($scope, $http, $sce, $window) {
           var item = {
             date: new Date(data.pubDate),
             id: title,
-            source: $sce.trustAsHtml("\"" + title + "\" On <a href = '" + data.guid.content + "' style='text-decoration: none' target='_top'>Deviant Art <img src = '/content/icons/deviantart2BW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
+            source: $sce.trustAsHtml("\"" + title + "\" On <a href = '" + data.guid.content + "' style='text-decoration: none' target='_top'>Deviant Art <img src = '/jessemichael.me/content/icons/deviantart2BW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: $scope.smallWidth,
             content: $sce.trustAsHtml("<center><img src = '" + data.thumbnail[data.thumbnail.length-1].url + "' width='100%' ></center>")
           }
@@ -168,7 +168,7 @@ function HomeCtrl($scope, $http, $sce, $window) {
           var item = {
             date: new Date(data.published),
             id: data.id,
-            source: $sce.trustAsHtml("On <a href = '" + data.url + "' style='text-decoration: none' target='_top'>Blogger <img src = '/content/icons/bloggerBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
+            source: $sce.trustAsHtml("On <a href = '" + data.url + "' style='text-decoration: none' target='_top'>Blogger <img src = '/jessemichael.me/content/icons/bloggerBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: $scope.largeWidth,
             content: $sce.trustAsHtml(data.content)
           }
@@ -193,7 +193,7 @@ function HomeCtrl($scope, $http, $sce, $window) {
           var item = {
             date: new Date(data.created_at),
             id: data.id,
-            source: $sce.trustAsHtml("On <a href = '" + data.permalink_url + "' style='text-decoration: none' target='_top'>Sound Cloud <img src = '/content/icons/soundcloudBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
+            source: $sce.trustAsHtml("On <a href = '" + data.permalink_url + "' style='text-decoration: none' target='_top'>Sound Cloud <img src = '/jessemichael.me/content/icons/soundcloudBW.png' align = 'absmiddle' height = '12' width = '12' style='border-style: none' /></a>"),
             style: $scope.smallWidth,
             content: content
           }
