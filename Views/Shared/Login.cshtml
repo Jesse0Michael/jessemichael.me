@@ -1,0 +1,16 @@
+﻿@model ICollection<AuthenticationClientData>
+  
+@using (Html.BeginForm("ExternalLogin", "Account", new { returnUrl = Request.QueryString["ReturnUrl"] }))
+{
+    @Html.AntiForgeryToken()
+    <fieldset id="socialLoginList">
+        <legend>Log in using any of the following services:</legend>
+        <p>
+            @foreach (AuthenticationClientData p in Model)
+            {
+                <button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Log in using your @p.DisplayName account">@p.DisplayName</button>
+            }
+        </p>
+    </fieldset>
+}
+    

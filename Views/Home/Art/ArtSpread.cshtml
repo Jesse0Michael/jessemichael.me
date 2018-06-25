@@ -1,0 +1,17 @@
+﻿@model List<JesseMichael.Models.Home.ArtModel>
+
+
+<div class="art-spread">
+
+    @foreach (JesseMichael.Models.Home.ArtModel art in Model)
+	{
+        
+        <a href="@art.MediumURL" target='_top' class='lytebox' data-lyte-options='group:ArtGroup'>
+            <img class="art-image" width="150px" height="150px" src="@art.ThumbnailURL" >
+
+        </a> 
+				
+	}
+
+
+</div>

@@ -1,0 +1,802 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{03F63F9F-BF7B-4AA5-9993-761569968343}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JesseMichael</RootNamespace>
+    <AssemblyName>JesseMichael</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>76fa8a0e</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <PublishDatabaseSettings>
+      <Objects>
+      </Objects>
+    </PublishDatabaseSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.3.4.13329\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FiftyOne.Foundation, Version=3.1.11.1, Culture=neutral, PublicKeyToken=e967ae578dabd98e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\51Degrees.mobi.3.1.11.1\lib\NET40\FiftyOne.Foundation.dll</HintPath>
+    </Reference>
+    <Reference Include="Hammock.ClientProfile">
+      <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\Hammock.ClientProfile.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.3.2.3\lib\net45\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.6.9.6\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.5.4.0\lib\net45\System.Web.Http.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="TweetSharp">
+      <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\TweetSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.3.2.3\lib\net45\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.3.2.3\lib\net45\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\MobileBase.css" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ScoreboardController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Mobile\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Models\Scoreboard\Database.cs" />
+    <Compile Include="Models\Home\AccountModel.cs" />
+    <Compile Include="Models\Home\ArtModel.cs" />
+    <Compile Include="Models\Home\Sources\BloggerSource.cs" />
+    <Compile Include="Models\Home\FeedObject.cs" />
+    <Compile Include="Models\Home\IFeedSource.cs" />
+    <Compile Include="Models\Home\InMemoryTokenManager.cs" />
+    <Compile Include="Models\Home\Sources\DeviantartSource.cs" />
+    <Compile Include="Models\Home\Sources\InstagramSource.cs" />
+    <Compile Include="Models\Home\Sources\SwarmSource.cs" />
+    <Compile Include="Models\Home\Sources\TwitterSource.cs" />
+    <Compile Include="Models\Scoreboard\Scoreboard.cs" />
+    <Compile Include="Models\Scoreboard\Scorer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Art\artSelect.swf" />
+    <Content Include="Content\Base.css" />
+    <Content Include="Content\Index\Banner.swf" />
+    <Content Include="Content\lytebox.css" />
+    <Content Include="Content\Projects\alpoh\Little_Piece_of_Heaven.exe" />
+    <Content Include="Content\Projects\alpoh\screen1.png" />
+    <Content Include="Content\Projects\alpoh\screen2.png" />
+    <Content Include="Content\Projects\alpoh\screen3.png" />
+    <Content Include="Content\Projects\back.png" />
+    <Content Include="Content\Projects\code.png" />
+    <Content Include="Content\Projects\doggame\screen1.png" />
+    <Content Include="Content\Projects\doggame\screen2.png" />
+    <Content Include="Content\Projects\doggame\screen3.png" />
+    <Content Include="Content\Projects\doggame\screen4.png" />
+    <Content Include="Content\Projects\download.png" />
+    <Content Include="Content\Projects\ld29\screen1.png" />
+    <Content Include="Content\Projects\ld29\screen2.png" />
+    <Content Include="Content\Projects\ld29\screen3.png" />
+    <Content Include="Content\Projects\ld29\screen4.png" />
+    <Content Include="Content\Projects\link.png" />
+    <Content Include="Content\Projects\lwt2\screen1.png" />
+    <Content Include="Content\Projects\lwt2\screen2.png" />
+    <Content Include="Content\Projects\lwt2\screen3.png" />
+    <Content Include="Content\Projects\lwt\LifeWithoutTaxes.swf" />
+    <Content Include="Content\Projects\lwt\screen1.png" />
+    <Content Include="Content\Projects\lwt\screen2.png" />
+    <Content Include="Content\Projects\lwt\screen3.png" />
+    <Content Include="Content\Projects\lwt\Sound Assets\Exciting Trailer.mp3" />
+    <Content Include="Content\Projects\lwt\Sound Assets\Frost Waltz.mp3" />
+    <Content Include="Content\Projects\lwt\Sound Assets\Kick Shock.mp3" />
+    <Content Include="Content\Projects\lwt\Sound Assets\Militaire Electronic.mp3" />
+    <Content Include="Content\Projects\lwt\Sound Assets\Scheming Weasel faster.mp3" />
+    <Content Include="Content\Projects\lwt\Sound Assets\Sock Hop.mp3" />
+    <Content Include="Content\Projects\lwt\Sound Assets\_notes\dwsync.xml" />
+    <Content Include="Content\Projects\play.png" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\Art\Canvas\Large\C964.JPG" />
+    <Content Include="Images\Art\Canvas\Large\C966.JPG" />
+    <Content Include="Images\Art\Canvas\Large\C967.JPG" />
+    <Content Include="Images\Art\Canvas\Large\C968.JPG" />
+    <Content Include="Images\Art\Canvas\Large\C969.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C970.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C971.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C972.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C973.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C974.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C975.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C976.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C977.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C978.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C979.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C980.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C981.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C982.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C983.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C984.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C985.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C986.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C987.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C989.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C990.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C991.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C992.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C993.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C994.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C995.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C996.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C997.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C998.jpg" />
+    <Content Include="Images\Art\Canvas\Large\C999.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C964.JPG" />
+    <Content Include="Images\Art\Canvas\Medium\C966.JPG" />
+    <Content Include="Images\Art\Canvas\Medium\C967.JPG" />
+    <Content Include="Images\Art\Canvas\Medium\C968.JPG" />
+    <Content Include="Images\Art\Canvas\Medium\C969.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C970.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C971.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C972.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C973.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C974.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C975.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C976.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C977.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C978.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C979.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C980.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C981.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C982.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C983.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C984.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C985.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C986.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C987.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C989.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C990.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C991.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C992.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C993.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C994.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C995.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C996.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C997.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C998.jpg" />
+    <Content Include="Images\Art\Canvas\Medium\C999.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C964.JPG" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C966.JPG" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C967.JPG" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C968.JPG" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C969.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C970.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C971.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C972.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C973.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C974.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C975.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C976.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C977.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C978.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C979.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C980.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C981.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C982.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C983.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C984.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C985.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C986.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C987.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C989.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C990.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C991.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C992.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C993.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C994.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C995.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C996.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C997.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C998.jpg" />
+    <Content Include="Images\Art\Canvas\Thumbnail\C999.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0001.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0002.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0003.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0004.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0005.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0006.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0007.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0008.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0009.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0010.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0011.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0012.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0013.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0014.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0015.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0016.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0017.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0018.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0019.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0020.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0021.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0022.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0023.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0024.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0025.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0026.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0027.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0028.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0029.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0030.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0031.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0032.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0033.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0034.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0035.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0036.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0037.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0038.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0039.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0040.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0041.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0042.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0043.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0044.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0045.jpg" />
+    <Content Include="Images\Art\Journal\Large\B0046.JPG" />
+    <Content Include="Images\Art\Journal\Large\B0047.JPG" />
+    <Content Include="Images\Art\Journal\Large\B048.JPG" />
+    <Content Include="Images\Art\Journal\Large\B049.JPG" />
+    <Content Include="Images\Art\Journal\Large\B050.JPG" />
+    <Content Include="Images\Art\Journal\Large\B051.JPG" />
+    <Content Include="Images\Art\Journal\Large\B052.JPG" />
+    <Content Include="Images\Art\Journal\Medium\B0001.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0002.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0003.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0004.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0005.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0006.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0007.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0008.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0009.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0010.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0011.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0012.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0013.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0014.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0015.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0016.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0017.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0018.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0019.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0020.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0021.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0022.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0023.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0024.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0025.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0026.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0027.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0028.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0029.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0030.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0031.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0032.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0033.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0034.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0035.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0036.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0037.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0038.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0039.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0040.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0041.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0042.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0043.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0044.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0045.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0046.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B0047.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B048.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B049.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B050.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B051.jpg" />
+    <Content Include="Images\Art\Journal\Medium\B052.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0001.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0002.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0003.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0004.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0005.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0006.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0007.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0008.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0009.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0010.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0011.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0012.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0013.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0014.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0015.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0016.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0017.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0018.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0019.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0020.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0021.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0022.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0023.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0024.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0025.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0026.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0027.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0028.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0029.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0030.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0031.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0032.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0033.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0034.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0035.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0036.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0037.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0038.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0039.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0040.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0041.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0042.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0043.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0044.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0045.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0046.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B0047.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B048.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B049.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B050.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B051.jpg" />
+    <Content Include="Images\Art\Journal\Thumbnail\B052.jpg" />
+    <Content Include="Images\Icons\blogger.png" />
+    <Content Include="Images\Icons\bloggerBW.png" />
+    <Content Include="Images\Icons\deviantart.png" />
+    <Content Include="Images\Icons\deviantart2.png" />
+    <Content Include="Images\Icons\deviantart2BW.png" />
+    <Content Include="Images\Icons\facebook.png" />
+    <Content Include="Images\Icons\github.png" />
+    <Content Include="Images\Icons\Googledoc.png" />
+    <Content Include="Images\Icons\heycam.png" />
+    <Content Include="Images\Icons\instagramBW.png" />
+    <Content Include="Images\Icons\jesse.png" />
+    <Content Include="Images\Icons\jesseW.png" />
+    <Content Include="Images\Icons\linkedin.png" />
+    <Content Include="Images\Icons\reddit.png" />
+    <Content Include="Images\Icons\swarm.png" />
+    <Content Include="Images\Icons\swarmBW.png" />
+    <Content Include="Images\Icons\twitter.png" />
+    <Content Include="Images\Icons\twitterBW.png" />
+    <Content Include="Images\Icons\youtube.png" />
+    <Content Include="Images\Lytebox\blank.gif" />
+    <Content Include="Images\Lytebox\bullet.gif" />
+    <Content Include="Images\Lytebox\close.gif" />
+    <Content Include="Images\Lytebox\closelabel.gif" />
+    <Content Include="Images\Lytebox\close_black.png" />
+    <Content Include="Images\Lytebox\close_blue.png" />
+    <Content Include="Images\Lytebox\close_gold.png" />
+    <Content Include="Images\Lytebox\close_green.png" />
+    <Content Include="Images\Lytebox\close_grey.png" />
+    <Content Include="Images\Lytebox\close_orange.png" />
+    <Content Include="Images\Lytebox\close_red.png" />
+    <Content Include="Images\Lytebox\donate-button.gif" />
+    <Content Include="Images\Lytebox\download-icon.gif" />
+    <Content Include="Images\Lytebox\error.png" />
+    <Content Include="Images\Lytebox\help.png" />
+    <Content Include="Images\Lytebox\image-1.jpg" />
+    <Content Include="Images\Lytebox\info.png" />
+    <Content Include="Images\Lytebox\loading.gif" />
+    <Content Include="Images\Lytebox\loading_black.gif" />
+    <Content Include="Images\Lytebox\loading_white.gif" />
+    <Content Include="Images\Lytebox\nextlabel.gif" />
+    <Content Include="Images\Lytebox\next_black.png" />
+    <Content Include="Images\Lytebox\next_black_off.png" />
+    <Content Include="Images\Lytebox\next_black_t.png" />
+    <Content Include="Images\Lytebox\next_blue.png" />
+    <Content Include="Images\Lytebox\next_blue_off.png" />
+    <Content Include="Images\Lytebox\next_blue_t.png" />
+    <Content Include="Images\Lytebox\next_gold.png" />
+    <Content Include="Images\Lytebox\next_gold_off.png" />
+    <Content Include="Images\Lytebox\next_gold_t.png" />
+    <Content Include="Images\Lytebox\next_green.png" />
+    <Content Include="Images\Lytebox\next_green_off.png" />
+    <Content Include="Images\Lytebox\next_green_t.png" />
+    <Content Include="Images\Lytebox\next_grey.png" />
+    <Content Include="Images\Lytebox\next_grey_off.png" />
+    <Content Include="Images\Lytebox\next_grey_t.png" />
+    <Content Include="Images\Lytebox\next_orange.png" />
+    <Content Include="Images\Lytebox\next_orange_off.png" />
+    <Content Include="Images\Lytebox\next_orange_t.png" />
+    <Content Include="Images\Lytebox\next_red.png" />
+    <Content Include="Images\Lytebox\next_red_off.png" />
+    <Content Include="Images\Lytebox\next_red_t.png" />
+    <Content Include="Images\Lytebox\pause_black.png" />
+    <Content Include="Images\Lytebox\pause_blue.png" />
+    <Content Include="Images\Lytebox\pause_gold.png" />
+    <Content Include="Images\Lytebox\pause_green.png" />
+    <Content Include="Images\Lytebox\pause_grey.png" />
+    <Content Include="Images\Lytebox\pause_orange.png" />
+    <Content Include="Images\Lytebox\pause_red.png" />
+    <Content Include="Images\Lytebox\play_black.png" />
+    <Content Include="Images\Lytebox\play_blue.png" />
+    <Content Include="Images\Lytebox\play_gold.png" />
+    <Content Include="Images\Lytebox\play_green.png" />
+    <Content Include="Images\Lytebox\play_grey.png" />
+    <Content Include="Images\Lytebox\play_orange.png" />
+    <Content Include="Images\Lytebox\play_red.png" />
+    <Content Include="Images\Lytebox\prevlabel.gif" />
+    <Content Include="Images\Lytebox\prev_black.png" />
+    <Content Include="Images\Lytebox\prev_black_off.png" />
+    <Content Include="Images\Lytebox\prev_black_t.png" />
+    <Content Include="Images\Lytebox\prev_blue.png" />
+    <Content Include="Images\Lytebox\prev_blue_off.png" />
+    <Content Include="Images\Lytebox\prev_blue_t.png" />
+    <Content Include="Images\Lytebox\prev_gold.png" />
+    <Content Include="Images\Lytebox\prev_gold_off.png" />
+    <Content Include="Images\Lytebox\prev_gold_t.png" />
+    <Content Include="Images\Lytebox\prev_green.png" />
+    <Content Include="Images\Lytebox\prev_green_off.png" />
+    <Content Include="Images\Lytebox\prev_green_t.png" />
+    <Content Include="Images\Lytebox\prev_grey.png" />
+    <Content Include="Images\Lytebox\prev_grey_off.png" />
+    <Content Include="Images\Lytebox\prev_grey_t.png" />
+    <Content Include="Images\Lytebox\prev_orange.png" />
+    <Content Include="Images\Lytebox\prev_orange_off.png" />
+    <Content Include="Images\Lytebox\prev_orange_t.png" />
+    <Content Include="Images\Lytebox\prev_red.png" />
+    <Content Include="Images\Lytebox\prev_red_off.png" />
+    <Content Include="Images\Lytebox\prev_red_t.png" />
+    <Content Include="Images\Lytebox\print_black.png" />
+    <Content Include="Images\Lytebox\print_blue.png" />
+    <Content Include="Images\Lytebox\print_gold.png" />
+    <Content Include="Images\Lytebox\print_green.png" />
+    <Content Include="Images\Lytebox\print_grey.png" />
+    <Content Include="Images\Lytebox\print_orange.png" />
+    <Content Include="Images\Lytebox\print_red.png" />
+    <Content Include="Images\Lytebox\thumb-1.jpg" />
+    <Content Include="Images\Lytebox\warning.png" />
+    <Content Include="Images\Public\blogPic01.jpg" />
+    <Content Include="Images\Public\blogPic02.jpg" />
+    <Content Include="Images\Public\flowerPainting1.jpg" />
+    <Content Include="Images\Public\flowerPainting2.jpg" />
+    <Content Include="Images\Public\redditgifts.png" />
+    <Content Include="Content\Projects\lwt2\LifeWithoutTaxes2.zip" />
+    <Content Include="51Degrees.config" />
+    <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
+    <None Include="Properties\PublishProfiles\WebPublishing.pubxml" />
+    <Content Include="Mobile\Default.aspx" />
+    <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.3.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.map" />
+    <Content Include="Scripts\jquery-ui-1.11.4.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery.animate-colors.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.3.0.debug.js" />
+    <Content Include="Scripts\knockout-3.3.0.js" />
+    <Content Include="Scripts\lytebox.js" />
+    <Content Include="Content\Projects\ld29\ld29play.html" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Home\Projects.cshtml" />
+    <Content Include="Views\Home\Art.cshtml" />
+    <Content Include="Views\Home\Projects\doggame.cshtml" />
+    <Content Include="Views\Home\Projects\lwt.cshtml" />
+    <Content Include="Views\Home\Projects\lwt2.cshtml" />
+    <Content Include="Views\Home\Projects\alpoh.cshtml" />
+    <Content Include="Views\Home\Art\ArtSpread.cshtml" />
+    <Content Include="Views\Home\Projects\lwtplay.cshtml" />
+    <Content Include="Views\Home\Bio.cshtml" />
+    <Content Include="Views\Home\Index.mobile.cshtml" />
+    <Content Include="Views\Shared\_Layout.mobile.cshtml" />
+    <Content Include="Views\Home\Bio.mobile.cshtml" />
+    <Content Include="Views\Home\Projects\LD29.cshtml" />
+    <Content Include="Content\Projects\ld29\ld29.unity3d" />
+    <Content Include="Views\Shared\Login.cshtml" />
+    <Content Include="Views\Scoreboard\Index.cshtml" />
+    <Content Include="Views\Scoreboard\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\Bio\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60622/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

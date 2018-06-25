@@ -1,0 +1,28 @@
+﻿@model System.Collections.Generic.List<JesseMichael.Models.Home.FeedObject>
+
+
+
+<div class ="blog">
+
+@foreach(JesseMichael.Models.Home.FeedObject feedObject in @Model)
+{
+    <div id ="box-@feedObject.id" class="blog-box" >
+        @Html.Raw(feedObject.content)
+
+
+        <br /><br />
+    
+        <div class="blog-discript">
+            @Html.Raw(feedObject.source)
+        </div>
+    
+        <div class="blog-date">
+            @Html.Raw(feedObject.dateTimeString)
+        </div>
+        
+    </div>
+}
+
+</div>
+
+<br /><br />

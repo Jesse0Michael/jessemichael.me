@@ -1,0 +1,48 @@
+﻿@model System.Collections.Generic.List<JesseMichael.Models.Scoreboard.Scoreboard>
+
+
+scoreboards
+
+@using (Html.BeginForm("AddScoreboard", "Scoreboard"))
+{
+    <input type="text" name="name" required />
+    <button type="submit" value="Add" >Add</button>
+}
+
+
+<br /><br />
+
+@foreach (var scoreboard in Model)
+{
+    <p>@scoreboard.name</p>
+    using (Html.BeginForm("RemoveScoreboard", "Scoreboard", new { scoreboardid = scoreboard.id }))
+    {
+        <button type="submit">-</button>
+    }
+    <ul>
+    @foreach (var scorer in scoreboard.scorers)
+    {
+        <li>
+            @scorer.name - @scorer.score
+            @using (Html.BeginForm("AddScore", "Scoreboard", new { scoreboardid = scoreboard.id, scorerid = scorer.id }))
+            {
+                <button type="submit">+</button>
+            }
+            @using (Html.BeginForm("RemoveScore", "Scoreboard", new { scoreboardid = scoreboard.id, scorerid = scorer.id }))
+            {
+                <button type="submit">-</button>
+            }
+        </li>
+        using (Html.BeginForm("RemoveScorer", "Scoreboard", new { scoreboardid = scoreboard.id, scorerid = scorer.id }))
+        {
+            <button type="submit">-</button>
+        }
+    }
+    </ul>
+    using (Html.BeginForm("AddScorer", "Scoreboard", new { scoreboardid = scoreboard.id }))
+    {
+        <input type="text" name="scorerid" required />
+        <input type="text" name="name" required />
+        <button type="submit" value="Add">Add</button>
+    }
+}

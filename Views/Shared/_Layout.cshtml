@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Jesse Michael</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+
+        @Styles.Render("~/Content/themes/base/css")
+        
+
+        <link rel="stylesheet" type="text/css" href="~/Content/Base.css" />
+        <script type="text/javascript" src="~/Scripts/lytebox.js"></script>
+        <link rel="stylesheet" href="~/Content/lytebox.css" type="text/css" media="screen" />
+
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+
+            _gaq.push(['_setAccount', 'UA-25334252-1']);
+
+            _gaq.push(['_trackPageview']);
+
+            (function () {
+
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+            })();
+        </script>
+
+    </head>
+    <body>
+        <div id="welcome_banner">
+
+
+		<object width="100%" height="100%" >
+
+
+  		<param  name="movie" value="~/Content/Index/Banner.swf" />
+
+		<param name="wmode" value="opaque" />
+
+		<param name="bgcolor" value="#F3F3F3" />
+
+
+
+		<embed src="~/Content/Index/Banner.swf" width="100%" height="16%" />
+
+
+		</object>
+        </div>
+		<div id="welcome_content"  >
+        @RenderBody()
+
+        </div>
+
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

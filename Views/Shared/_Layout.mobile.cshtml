@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Jesse Michael</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+
+        @Styles.Render("~/Content/themes/base/css")
+        
+
+        <link rel="stylesheet" type="text/css" href="~/Content/MobileBase.css" />
+        <script type="text/javascript" src="~/Scripts/lytebox.js"></script>
+        <link rel="stylesheet" href="~/Content/lytebox.css" type="text/css" media="screen" />
+
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+
+            _gaq.push(['_setAccount', 'UA-25334252-1']);
+
+            _gaq.push(['_trackPageview']);
+
+            (function () {
+
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+            })();
+        </script>
+
+    </head>
+    <body>
+        <div id="welcome_banner">
+            <div class="mobile-nav" onclick="ToggleMenu()" style="width:10%;">
+                <img src="/images/icons/jesseW.png" width="34px" height="34px" style="margin-top:7px;" />
+            </div>
+            <div class="mobile-nav" onclick="window.location = '/Home/Index'" style="width:90%;">
+                JESSEMICHAEL.ME
+            </div>
+        </div>
+        <div id="welcome_menu">
+            <div class="welcome_menu_item" onclick="window.location = '/Home/Projects'" >
+                Projects
+            </div>
+            
+            <div class="welcome_menu_item" onclick="window.location = '/Home/Bio'" >
+                Web
+            </div>
+
+            <div class="welcome_menu_item" onclick="ToggleArt()" >
+                Art
+            </div>
+
+            <div id="art_menu">
+                <div class="welcome_menu_item" onclick="window.location = '/Home/Art/Canvas'" style="background-color:#333333;" >
+                    Canvas
+                </div>
+                <div class="welcome_menu_item" onclick="window.location = '/Home/Art/Journal'" style="background-color:#333333;" >
+                    Journal
+                </div>
+            </div>
+        </div>
+		<div id="welcome_content"  >
+        @RenderBody()
+
+        </div>
+
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
+
+<script>
+    function ToggleMenu() {
+        var top = $("#welcome_menu").css("top");
+
+        if (top == "-150px") {
+            $("#welcome_menu").animate({
+                top:"50px"
+            }, 500);
+
+            $("#art_menu").animate({
+                top: "100px"
+            }, 500);
+        }
+        else {
+            $("#welcome_menu").animate({
+                top: "-150px"
+            }, 500);
+            $("#art_menu").animate({
+                top: "-75px"
+            }, 500);
+        }
+    }
+
+    function ToggleArt() {
+        var top = $("#art_menu").css("top");
+
+        if (top == "100px") {
+            $("#art_menu").animate({
+                top: "200px"
+            }, 500);
+        }
+        else {
+            $("#art_menu").animate({
+                top: "100px"
+            }, 500);
+        }
+    }
+</script>
