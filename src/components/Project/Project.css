@@ -1,0 +1,16 @@
+.project-card {
+  width: 700px;
+  margin: 22px auto;
+}
+.project-title {
+  font-size: 24px;
+  line-height: 28px;
+  float: left;
+}
+.project-date {
+  font-size: 12px;
+  float: right;
+}
+.project-text {
+  margin: auto;
+}
