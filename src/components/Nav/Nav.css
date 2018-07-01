@@ -5,4 +5,13 @@
 .nav-logo {
   height: 50px;
   width: 50px;
+  margin-right: 50px;
+}
+.nav-button {
+  height: 64px;
+  background-color: #9e9e9e;
+}
+.nav-text {
+  color: #fff;
+  font-size:18px;
 }

@@ -4,7 +4,7 @@ import Project from "../../components/Project";
 class Projects extends Component {
   render() {
     return (
-      <div className="Projects">
+      <div className="projects">
         <Project
           title="Beneath The Surface"
           date="2014"
@@ -32,8 +32,7 @@ class Projects extends Component {
             },
             {
               text: "Link",
-              link:
-                "http://www.ludumdare.com/compo/ludum-dare-29/?action=preview&uid=34408",
+              link: "http://www.ludumdare.com/compo/ludum-dare-29/?action=preview&uid=34408",
               icon: "link"
             },
             {
@@ -58,8 +57,7 @@ class Projects extends Component {
           buttons={[
             {
               text: "Link",
-              link:
-                "http://www.windowsphone.com/en-US/apps/dd523323-3fea-448f-b01e-42ce850acb8c",
+              link: "http://www.windowsphone.com/en-US/apps/dd523323-3fea-448f-b01e-42ce850acb8c",
               icon: "widgets"
             },
             {
@@ -69,8 +67,7 @@ class Projects extends Component {
             },
             {
               text: "Link",
-              link:
-                "https://play.google.com/store/apps/details?id=org.phonebuddy",
+              link: "https://play.google.com/store/apps/details?id=org.phonebuddy",
               icon: "android"
             },
             {
@@ -84,11 +81,7 @@ class Projects extends Component {
           title="Life Without Taxes 2"
           date="2010"
           description="The second installment of Life Without Taxes is an exciting adventure in the 3D world of Taxfreeville. The game play is similar to the first Life Without Taxes because it has you live a day in the life of a person who lives in a town that does not have taxes. In the game, you start your day by having to drive to work in the morning. But the roads are trashed because there is no government funding to fix them, and the people of Taxfreeville are reckless because there is no police force to serve and protect. You've taken it upon yourself to try and do something about the animals that roam free in Taxfreeville, so as your job you clean the city of wild animals because there is no government regulated animal control to do so. After work you drive back home, with the streets being even more trashed and reckless, to spend your night defending your house from burglars because of the lack of police in Taxfreeville. The Life Without Taxes games are meant to be educational to teach the users about the importance of taxes, while having fun. This game is unique from the first one because it uses 3D graphics to enhance the game play. This project was developed by myself, written in C# using the XNA framework."
-          images={[
-            "/projects/lwt2/screen1.png",
-            "/projects/lwt2/screen2.png",
-            "/projects/lwt2/screen3.png"
-          ]}
+          images={["/projects/lwt2/screen1.png", "/projects/lwt2/screen2.png", "/projects/lwt2/screen3.png"]}
           buttons={[
             {
               text: "Download",
@@ -106,11 +99,7 @@ class Projects extends Component {
           title="Life Without Taxes"
           date="2009"
           description="Life Without Taxes is a game that takes you through a day in a world where there are no taxes. The game is meant to be a fun way to teach the importance of taxes. The game starts by having the player drive to work on streets that are unkempt because of the lack of government services. When the player survives, they arrive at their job at a grocery store where they have to bag the good food and throw away the surplus of rotten food because there is no government regulation on food, all while stopping burglars from stealing from your store. The player then drives home to discover that his house is on fire, and because there are no taxes to pay for a fire department, you have to put the fire out yourself. Life Without Taxes is a 2D game built in Flash using Actionscript. This project was developed by Johannes Alexander, Rachel Phillips, Galen Arnold, and myself."
-          images={[
-            "/projects/lwt/screen1.png",
-            "/projects/lwt/screen2.png",
-            "/projects/lwt/screen3.png"
-          ]}
+          images={["/projects/lwt/screen1.png", "/projects/lwt/screen2.png", "/projects/lwt/screen3.png"]}
           buttons={[
             { text: "Play", link: "/projects/lwtplay", icon: "play_arrow" },
             {
@@ -124,16 +113,11 @@ class Projects extends Component {
           title="A Little Piece of Heaven"
           date="2009"
           description="This side-scrolling game tells the story of a beautiful girl who was kidnapped and the man fighting his way to get him back. The game takes you through 4 unique levels where you fight your way through, hoping to reach your kidnapped girlfriend. A Little Piece of Heaven is a 2D side-scroller developed in GameMaker, with unique art, developed by me. The game play for this game is not all that exciting but I am really proud of the art that was created for each unique level."
-          images={[
-            "/projects/alpoh/screen1.png",
-            "/projects/alpoh/screen2.png",
-            "/projects/alpoh/screen3.png"
-          ]}
+          images={["/projects/alpoh/screen1.png", "/projects/alpoh/screen2.png", "/projects/alpoh/screen3.png"]}
           buttons={[
             {
               text: "Link",
-              link:
-                "http://sandbox.yoyogames.com/games/200129-a-little-piece-of-heaven",
+              link: "http://sandbox.yoyogames.com/games/200129-a-little-piece-of-heaven",
               icon: "link"
             },
             {
