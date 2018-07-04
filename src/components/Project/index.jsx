@@ -27,7 +27,7 @@ const Project = ({ title, date, description, images, buttons }) => (
             {images.map(function(image) {
               return (
                 <div>
-                  <img className="project-img" src={image} />
+                  <img className="project-img" src={image} alt="" />
                 </div>
               );
             })}
@@ -41,7 +41,7 @@ const Project = ({ title, date, description, images, buttons }) => (
       </Typography>
       <Typography>
         <br /> <br />
-        {description}
+        <div dangerouslySetInnerHTML={{__html: description}} />
       </Typography>
     </CardContent>
     {buttons &&

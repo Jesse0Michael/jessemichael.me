@@ -1,6 +1,8 @@
 export interface ContentItem {
   media: string;
-  description: string;
-  date: string;
+  content: string;
+  id: string;
+  date: Date;
   source: string;
+  link: string;
 }
