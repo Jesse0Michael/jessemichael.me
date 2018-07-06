@@ -18,4 +18,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       # - run: npm test
       - run: npm run build
-      - run: firebase login; firebase deploy --token "$FIREBASE_TOKEN"
+      - run: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
