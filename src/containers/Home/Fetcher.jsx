@@ -2,6 +2,7 @@ var items = [];
 
 class Fetcher {
   Fetch() {
+    items = [];
     return Promise.all([
       this.fetchBlogger(),
       this.fetchDeviantArt(),
@@ -12,7 +13,7 @@ class Fetcher {
     ]).then(() => {
       return items.sort(function(a, b) {
         return a.date < b.date ? 1 : b.date < a.date ? -1 : 0;
-      });
+      }).slice(0,20);
     });
   }
 
@@ -41,7 +42,7 @@ class Fetcher {
 
   fetchDeviantArt() {
     // Parse Deviantart RSS feed and get past CORS through https://developer.yahoo.com/yql/
-    var url = "http://backend.deviantart.com/rss.xml?q=gallery:mini-michael/33242408";
+    var url = "https://backend.deviantart.com/rss.xml?q=gallery:mini-michael/33242408";
 
     return fetch(
       "https://query.yahooapis.com/v1/public/yql?q=select * from rss where url='" +
@@ -113,7 +114,7 @@ class Fetcher {
 
   fetchSoundCloud() {
     return fetch(
-      "http://api.soundcloud.com/users/20560365/favorites?client_id=f330c0bb90f1c89a15e78ece83e21856&limit=20"
+      "https://api.soundcloud.com/users/20560365/favorites?client_id=f330c0bb90f1c89a15e78ece83e21856&limit=20"
     )
       .then(r => r.json())
       .then(resp => {
