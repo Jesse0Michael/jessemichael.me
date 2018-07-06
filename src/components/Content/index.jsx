@@ -20,17 +20,17 @@ class Content extends Component {
   sourceIcon(source) {
     switch (source) {
       case "Instagram":
-        return "/icons/instagram.png";
+        return "/icons/instagram2.svg";
       case "Twitter":
         return "/icons/twitter.svg";
       case "Swarm":
         return "/icons/swarm.png";
       case "Sound Cloud":
-        return "/icons/soundcloud.png";
+        return "/icons/soundcloud.svg";
       case "Blogger":
-        return "/icons/blogger.png";
+        return "/icons/blogger.svg";
       case "Deviant Art":
-        return "/icons/deviantart2.png";
+        return "/icons/deviantart.svg";
       default:
         return "";
     }

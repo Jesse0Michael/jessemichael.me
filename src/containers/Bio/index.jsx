@@ -11,55 +11,55 @@ class Bio extends Component {
         <Grid container className="bio-grid" spacing={16} justify="space-between">
           <Grid item>
             <Button variant="contained" className="bio-button" href="http://jesse0michael.blogspot.com/">
-              <img src="/icons/blogger.png" className="bio-img" alt=""/>
+              <img src="/icons/blogger.svg" className="bio-img" alt=""/>
               <span className="bio-text">Blogger</span>
             </Button>
           </Grid>
           <Grid item>
             <Button variant="contained" className="bio-button" href="https://www.deviantart.com/mini-michael/">
-              <img src="/icons/deviantart2.png" className="bio-img" alt=""/>
+              <img src="/icons/deviantart.svg" className="bio-img" alt=""/>
               <span className="bio-text">Deviant Art</span>
             </Button>
           </Grid>
           <Grid item>
             <Button variant="contained" className="bio-button" href="http://www.facebook.com/jesse0michael/">
-              <img src="/icons/facebook.png" className="bio-img" alt=""/>
+              <img src="/icons/facebook.svg" className="bio-img" alt=""/>
               <span className="bio-text">Facebook</span>
             </Button>
           </Grid>
           <Grid item>
             <Button variant="contained" className="bio-button" href="https://github.com/Jesse0Michael">
-              <img src="/icons/github.png" className="bio-img" alt=""/>
+              <img src="/icons/github.svg" className="bio-img" alt=""/>
               <span className="bio-text">GitHub</span>
             </Button>
           </Grid>
           <Grid item>
             <Button variant="contained" className="bio-button" href="https://www.instagram.com/jesse0michael/">
-              <img src="/icons/instagram.png" className="bio-img" alt=""/>
+              <img src="/icons/instagram2.svg" className="bio-img" alt=""/>
               <span className="bio-text">Instagram</span>
             </Button>
           </Grid>
           <Grid item>
             <Button variant="contained" className="bio-button" href="http://www.linkedin.com/pub/jesse0michael/">
-              <img src="/icons/linkedin.png" className="bio-img" alt=""/>
+              <img src="/icons/linkedin.svg" className="bio-img" alt=""/>
               <span className="bio-text">Linked In</span>
             </Button>
           </Grid>
           <Grid item>
             <Button variant="contained" className="bio-button" href="https://soundcloud.com/jesse0michael/">
-              <img src="/icons/soundcloud.png" className="bio-img" alt=""/>
+              <img src="/icons/soundcloud.svg" className="bio-img" alt=""/>
               <span className="bio-text">Sound Cloud</span>
             </Button>
           </Grid>
           <Grid item>
             <Button variant="contained" className="bio-button" href="https://steamcommunity.com/id/Jesse0Michael/">
-              <img src="/icons/steam.png" className="bio-img" alt=""/>
+              <img src="/icons/steam2.svg" className="bio-img" alt=""/>
               <span className="bio-text">Steam</span>
             </Button>
           </Grid>
           <Grid item>
             <Button variant="contained" className="bio-button" href="https://twitter.com/Jesse0Michael/">
-              <img src="/icons/twitter.png" className="bio-img" alt=""/>
+              <img src="/icons/twitter.svg" className="bio-img" alt=""/>
               <span className="bio-text">Twitter</span>
             </Button>
           </Grid>
@@ -69,13 +69,13 @@ class Bio extends Component {
               className="bio-button"
               href="https://account.xbox.com/en-us/Profile?Gamertag=LoopedMichael/"
             >
-              <img src="/icons/xbox.png" className="bio-img" alt=""/>
+              <img src="/icons/xbox.svg" className="bio-img" alt=""/>
               <span className="bio-text">Xbox</span>
             </Button>
           </Grid>
           <Grid item>
             <Button variant="contained" className="bio-button" href="http://www.youtube.com/user/MiniMichael63/">
-              <img src="/icons/youtube.png" className="bio-img" alt=""/>
+              <img src="/icons/youtube.svg" className="bio-img" alt=""/>
               <span className="bio-text">YouTube</span>
             </Button>
           </Grid>
