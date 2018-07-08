@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="%PUBLIC_URL%/pages/boxes/boxes.js"></script>
   <title>Jesse Michael</title>
 </head>
 
@@ -17,6 +18,8 @@
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
+  <canvas id="boxes" class="boxes"></canvas>
+  <script>Boxes("boxes", [], 255, 1, 40, 10);</script>
   <div id="root"></div>
 </body>
 

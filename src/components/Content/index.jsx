@@ -14,13 +14,13 @@ class Content extends Component {
     this.state = {
       elevation: 5,
       backgroundColor: "#fff",
-      transition: "background-color 250ms linear, box-shadow 250ms linear"
+      transition: "background-color 250ms linear, box-shadow 250ms linear",
     };
   }
   sourceIcon(source) {
     switch (source) {
       case "Instagram":
-        return "/icons/instagram2.svg";
+        return "/icons/instagram.png";
       case "Twitter":
         return "/icons/twitter.svg";
       case "Swarm":
@@ -42,21 +42,27 @@ class Content extends Component {
     var b = Math.floor(Math.random() * 55 + 200);
 
     var rand = r.toString(16) + g.toString(16) + b.toString(16);
-    console.log(e.target)
     this.setState({
       elevation: 3,
       backgroundColor: "#" + rand,
       transition: "background-color 100ms linear, box-shadow 100ms linear"
     });
+
+    Array.from(e.currentTarget.getElementsByTagName('video')).forEach(video => {
+      video.play()
+    });
   };
-  
-  mouseOut = () => {
+
+  mouseOut = e => {
     this.setState({
       elevation: 5,
       backgroundColor: "#fff",
       transition: "background-color 250ms linear, box-shadow 250ms linear"
     });
-  }
+    Array.from(e.currentTarget.getElementsByTagName('video')).forEach(video => {
+      video.pause()
+    });
+  };
 
   render() {
     const item = this.props.item;
@@ -64,13 +70,15 @@ class Content extends Component {
       <Card
         className="content-card"
         elevation={this.state.elevation}
-        style={{backgroundColor: this.state.backgroundColor, transition: this.state.transition}}
-        onMouseOver={this.mouseOver}
-        onMouseOut={this.mouseOut}
+        style={{ backgroundColor: this.state.backgroundColor, transition: this.state.transition }}
+        onMouseEnter={this.mouseOver}
+        onMouseLeave={this.mouseOut}
       >
-        <CardMedia>
-          <div dangerouslySetInnerHTML={{ __html: item.media }} />
-        </CardMedia>
+        {item.media && (
+          <CardMedia>
+            <div dangerouslySetInnerHTML={{ __html: item.media }} />
+          </CardMedia>
+        )}
         {item.content && (
           <CardContent>
             <Typography component="p" className="content-text">

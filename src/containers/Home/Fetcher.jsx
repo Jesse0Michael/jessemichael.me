@@ -91,7 +91,7 @@ class Fetcher {
               data.id +
               '" poster="' +
               data.images.low_resolution.url +
-              '" onmouseover="this.play()" onmouseout="this.pause()" class="content-media"><source src = "' +
+              '" class="content-media"><source src = "' +
               data.videos.standard_resolution.url +
               "\" type='video/mp4'></video>";
           } else {
