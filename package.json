@@ -17,8 +17,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "firebase-tools": "^3.19.3",
     "eslint": "^5.0.1",
-    "eslint-config-google": "^0.9.1"
+    "eslint-config-google": "^0.9.1",
+    "firebase-tools": "^3.19.3"
   }
 }
