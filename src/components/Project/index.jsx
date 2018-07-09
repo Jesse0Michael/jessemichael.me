@@ -11,7 +11,7 @@ import Icon from "@material-ui/core/Icon";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-const Project = ({ title, date, description, images, buttons }) => (
+const Project = ({ title, date, description, images, buttons, video }) => (
   <Card className="project-card">
     {images &&
       !!images.length && (
@@ -34,6 +34,11 @@ const Project = ({ title, date, description, images, buttons }) => (
           </Carousel>
         </CardMedia>
       )}
+    {video && (
+      <CardMedia>
+        <video muted loop autoPlay src={video} className="project-img" />
+      </CardMedia>
+    )}
     <CardContent className="project-text">
       <Typography component="p">
         <span className="project-title">{title}</span>
@@ -41,7 +46,7 @@ const Project = ({ title, date, description, images, buttons }) => (
       </Typography>
       <Typography>
         <br /> <br />
-        <div dangerouslySetInnerHTML={{__html: description}} />
+        <div dangerouslySetInnerHTML={{ __html: description }} />
       </Typography>
     </CardContent>
     {buttons &&
@@ -64,7 +69,8 @@ Project.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   images: PropTypes.arrayOf(PropTypes.string),
-  buttons: PropTypes.arrayOf(PropTypes.object)
+  buttons: PropTypes.arrayOf(PropTypes.object),
+  video: PropTypes.string
 };
 
 export default Project;

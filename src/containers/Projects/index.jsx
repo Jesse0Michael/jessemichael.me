@@ -6,9 +6,65 @@ class Projects extends Component {
     return (
       <div className="projects">
         <Project
+          title="Go Rest Assured"
+          date="2018"
+          description="Entering the world of Open Source Software, I built a useful tool in GO that I am proud to share with the software community.
+          <br /><br />
+          Go Rest Assured is a small service written in GO intended to be used to mock out REST API applications for testing. The concept is based on other <a href='http://rest-assured.io/'>Rest Assured</a> application testing services.
+          <br /><br />
+          The <b>httptest</b> package is usually too limited for what I need. For this, I use the Go Rest Assured client to stub out and validate any number of api endpoints and validate the calls made to them.
+          <br /><br />
+          In integreation testing I use the Go Rest Assured binary to preload api expectations to validate that my application works with external services without having my tests depend on those services. 
+          The tests don't even have to be writtin in GO to use this.
+          "
+          video="/projects/gorestassured/cli.mov"
+          buttons={[
+            {
+              text: "Code",
+              link: "https://github.com/Jesse0Michael/go-rest-assured",
+              icon: "code"
+            }
+          ]}
+        />
+        <Project
+          title="Transportation Day"
+          date="2018"
+          description="Transportation Day is a fun game where you spawn different modes of transportation with the touch of a finger.
+          Drive cars around in circles, fly planes over the scenery, crash them into each other! Enjoy a wide variety of different vehicles that you can create by draging accross the screne.
+          <br /><br />
+          This project was a dive into using 3D models in Unity. The models used in this game are provided for free from <a href='http://quaternius.com/' >Quaternius</a>.
+          It also expanded my Unity toolset by getting exposure to 3D audio, collision, partical effects, and other Unity features.
+          "
+          video="https://github.com/RaineyStreetGames/Transport/raw/master/Marketing/TransportationDay.mp4"
+          buttons={[
+            {
+              text: "Code",
+              link: "https://github.com/RaineyStreetGames/Transport",
+              icon: "code"
+            }
+          ]}
+        />
+        <Project
+          title="Boxter"
+          date="2017"
+          description="Wanting to get back into game development and work with Unity again, I remasterd Phone Buddy. This time written in C# using Unity. 
+          Boxter is the name of the dog who the textures are modeled off of.
+          <br /><br />
+          Working in Unity is a great for what I try to do when I have time to work on games. I'm not interested in building my own game framework. I feel accomplished when I have a working game that I can share with family and friends. 
+          The goal of this project was to learn how to use Unity better and publish this dog game on all mobile platforms."
+          video="https://github.com/RaineyStreetGames/PhoneBuddy-Unity/raw/master/Marketing/boxter%20promo.mp4"
+          buttons={[
+            {
+              text: "Code",
+              link: "https://github.com/RaineyStreetGames/PhoneBuddy-Unity",
+              icon: "code"
+            }
+          ]}
+        />
+        <Project
           title="Beneath The Surface"
           date="2014"
-          description="After a long break from (outside of work) development, I decided to jump back into games by participating in the 29th Ludum Dare competition. <a href=`http://www.ludumdare.com/`>Ludum Dare</a>
+          description="After a long break from (outside of work) development, I decided to jump back into games by participating in the 29th Ludum Dare competition. <a href='http://www.ludumdare.com/'>Ludum Dare</a>
                 is a competition where developers create a game based on a theme in one weekend. The theme is announced at the beginning of the weekend and it was `Beneath the Surface`.
                 It felt really good to be making games again, even though I didn't get very far in the short amount of time.
                 <br /><br />
