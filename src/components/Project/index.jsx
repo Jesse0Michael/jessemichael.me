@@ -36,7 +36,7 @@ const Project = ({ title, date, description, images, buttons, video }) => (
       )}
     {video && (
       <CardMedia>
-        <video muted loop autoPlay src={video} className="project-img" />
+        <video muted loop autoPlay playsinline src={video} className="project-img" />
       </CardMedia>
     )}
     <CardContent className="project-text">
