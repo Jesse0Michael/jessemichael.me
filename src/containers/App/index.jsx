@@ -54,7 +54,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <MuiThemeProvider theme={theme}>
           <Nav page={this.state.page} pageTurn={this.setPage} />
           {this.renderContent()}

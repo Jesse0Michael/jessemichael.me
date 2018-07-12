@@ -21,14 +21,17 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        <Grid container spacing={32} justify="space-between">
-          {this.state.items && this.state.items.map(function(item) {
-            return (
-              <Grid item>
-                <Content item={item} />
-              </Grid>
-            );
-          })}
+        <Grid container className="home-grid">
+          {this.state.items &&
+            this.state.items.map(function(item) {
+              return (
+                <div className="home-grid-item">
+                  <Grid item>
+                    <Content item={item} />
+                  </Grid>
+                </div>
+              );
+            })}
         </Grid>
       </div>
     );

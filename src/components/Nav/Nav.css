@@ -1,11 +1,10 @@
 .nav {
-  height: 50px;
-  margin-bottom: 28px;
+  height: 64px;
 }
 .nav-logo {
   height: 50px;
   width: 50px;
-  margin-right: 50px;
+  margin-right: 20px;
 }
 .nav-button {
   height: 64px;

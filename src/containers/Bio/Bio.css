@@ -1,7 +1,6 @@
 .bio {
-  margin-top: 22px;
-  margin: auto;
-  width: 750px;
+  margin: 22px auto;
+  max-width: 750px;
 }
 .bio-grid {
   width: 100%;
@@ -21,7 +20,7 @@
   text-align: center;
 }
 .bio-card {
-  width: 750px;
+  max-width: 750px;
   height: 1350px;
   margin: 22px auto;
 }

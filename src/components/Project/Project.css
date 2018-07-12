@@ -1,5 +1,5 @@
 .project-card {
-  width: 700px;
+  max-width: 700px;
   margin: 22px auto;
 }
 .project-title {

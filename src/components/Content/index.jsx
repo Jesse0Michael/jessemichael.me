@@ -68,7 +68,6 @@ class Content extends Component {
     const item = this.props.item;
     return (
       <Card
-        className="content-card"
         elevation={this.state.elevation}
         style={{ backgroundColor: this.state.backgroundColor, transition: this.state.transition }}
         onMouseEnter={this.mouseOver}

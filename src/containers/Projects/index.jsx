@@ -8,16 +8,14 @@ class Projects extends Component {
         <Project
           title="Go Rest Assured"
           date="2018"
-          description="Entering the world of Open Source Software, I built a useful tool in GO that I am proud to share with the software community.
+          description="Entering the world of Open Source Software, I built a tool in GO that I find very useful and hope other find it useful as well.
+          Go Rest Assured is a small REST API testing service intended to mock out web endpoints with defined responses and verify calls made to those endpoints. 
+          The concept is based on other <a href='http://rest-assured.io/'>Rest Assured</a> application testing services.
           <br /><br />
-          Go Rest Assured is a small service written in GO intended to be used to mock out REST API applications for testing. The concept is based on other <a href='http://rest-assured.io/'>Rest Assured</a> application testing services.
-          <br /><br />
-          The <b>httptest</b> package is usually too limited for what I need. For this, I use the Go Rest Assured client to stub out and validate any number of api endpoints and validate the calls made to them.
-          <br /><br />
-          In integreation testing I use the Go Rest Assured binary to preload api expectations to validate that my application works with external services without having my tests depend on those services. 
-          The tests don't even have to be writtin in GO to use this.
+          The GO <i>httptest</i> package is usually too limited for what I need. For this case, I use the Go Rest Assured client to stub out and validate any number of api endpoints and validate the calls made to them.
+          In integration testing I use the Go Rest Assured binary to preload api expectations to validate that my application works with external services without having my tests depend on those services. 
+          The tests don't even have to be written in GO to use this.
           "
-          video="/projects/gorestassured/cli.mov"
           buttons={[
             {
               text: "Code",
@@ -30,10 +28,10 @@ class Projects extends Component {
           title="Transportation Day"
           date="2018"
           description="Transportation Day is a fun game where you spawn different modes of transportation with the touch of a finger.
-          Drive cars around in circles, fly planes over the scenery, crash them into each other! Enjoy a wide variety of different vehicles that you can create by draging accross the screne.
+          Drive cars around in circles, fly planes over the scenery, crash them into each other! Enjoy a wide variety of different vehicles that you can create by dragging across the screen.
           <br /><br />
           This project was a dive into using 3D models in Unity. The models used in this game are provided for free from <a href='http://quaternius.com/' >Quaternius</a>.
-          It also expanded my Unity toolset by getting exposure to 3D audio, collision, partical effects, and other Unity features.
+          It also expanded my Unity toolset by getting exposure to 3D audio, collision, particle effects, and other Unity features.
           "
           video="https://github.com/RaineyStreetGames/Transport/raw/master/Marketing/TransportationDay.mp4"
           buttons={[
@@ -47,7 +45,7 @@ class Projects extends Component {
         <Project
           title="Boxter"
           date="2017"
-          description="Wanting to get back into game development and work with Unity again, I remasterd Phone Buddy. This time written in C# using Unity. 
+          description="Wanting to get back into game development and work with Unity again, I remastered Phone Buddy. This time written in C# using Unity. 
           Boxter is the name of the dog who the textures are modeled off of.
           <br /><br />
           Working in Unity is a great for what I try to do when I have time to work on games. I'm not interested in building my own game framework. I feel accomplished when I have a working game that I can share with family and friends. 
