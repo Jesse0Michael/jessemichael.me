@@ -33,7 +33,7 @@ class Projects extends Component {
           This project was a dive into using 3D models in Unity. The models used in this game are provided for free from <a href='http://quaternius.com/' >Quaternius</a>.
           It also expanded my Unity toolset by getting exposure to 3D audio, collision, particle effects, and other Unity features.
           "
-          video="https://cdn.rawgit.com/RaineyStreetGames/Transport/95f7b322/Marketing/TransportationDay.mp4"
+          video="/projects/transportation/TransportationDay.mp4"
           buttons={[
             {
               text: "Code",
@@ -50,7 +50,7 @@ class Projects extends Component {
           <br /><br />
           Working in Unity is a great for what I try to do when I have time to work on games. I'm not interested in building my own game framework. I feel accomplished when I have a working game that I can share with family and friends. 
           The goal of this project was to learn how to use Unity better and publish this dog game on all mobile platforms."
-          video="https://cdn.rawgit.com/RaineyStreetGames/PhoneBuddy-Unity/39c0c02f/Marketing/boxter%20promo.mp4"
+          video="/projects/boxter/boxter%20promo.mp4"
           buttons={[
             {
               text: "Code",
