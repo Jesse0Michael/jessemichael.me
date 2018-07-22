@@ -5,25 +5,56 @@ import "./Home.css";
 import Fetcher from "./Fetcher";
 
 const fetcher = new Fetcher();
-
 class Home extends Component {
   constructor(p) {
     super(p);
-    this.state = { items: [] };
+    this.state = {
+      items: [],
+      count: 20
+    };
+  }
+
+  componentWillUnmount() {
+    // document.removeEventListener("scroll", this.trackScrolling);
   }
 
   componentDidMount() {
-    fetcher.Fetch().then(i => {
-      this.setState({ items: i });
+    document.addEventListener("scroll", this.trackScrolling);
+    this.setState({ items: [] });
+    fetcher.fetchBlogger().then(i => this.addItems(i));
+    fetcher.fetchDeviantArt().then(i => this.addItems(i));
+    fetcher.fetchInstagram().then(i => this.addItems(i));
+    fetcher.fetchSoundCloud().then(i => this.addItems(i));
+    fetcher.fetchSwarm().then(i => this.addItems(i));
+    fetcher.fetchTwitter().then(i => this.addItems(i));
+  }
+
+  addItems(items) {
+    this.setState({
+      items: this.state.items.concat(items).sort(function(a, b) {
+        return a.date < b.date ? 1 : b.date < a.date ? -1 : 0;
+      })
     });
   }
 
+  isBottom(el) {
+    if (el == null) {
+      return false
+    }
+    return el.getBoundingClientRect().bottom <= window.innerHeight;
+  }
+
   render() {
+    const wrappedElement = document.getElementById("homie");
+    if (this.isBottom(wrappedElement)) {
+      console.log("header bottom reached");
+      document.removeEventListener("scroll", this.trackScrolling);
+    }
     return (
       <div className="home">
-        <Grid container className="home-grid">
+        <Grid id="homie" container className="home-grid">
           {this.state.items &&
-            this.state.items.map(function(item) {
+            this.state.items.slice(0, this.state.count).map(function(item) {
               return (
                 <div className="home-grid-item">
                   <Grid item>

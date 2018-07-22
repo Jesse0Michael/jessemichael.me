@@ -1,49 +1,24 @@
-var items = [];
-
 class Fetcher {
-  Fetch() {
-    items = [];
-    return Promise.all([
-      this.fetchBlogger(),
-      this.fetchDeviantArt(),
-      this.fetchInstagram(),
-      this.fetchSoundCloud(),
-      this.fetchSwarm()
-      // this.fetchTwitter()
-    ]).then(() => {
-      return items.sort(function(a, b) {
-        return a.date < b.date ? 1 : b.date < a.date ? -1 : 0;
-      }).slice(0,20);
-    });
-  }
-
   fetchBlogger() {
     return fetch(
       "https://www.googleapis.com/blogger/v2/blogs/2628647666607369284/posts?key=AIzaSyBU3_KGZO90Vu_s8Lhbl7lJAEsaIouAEaY&fetchBodies=true&maxResults=20"
     )
       .then(r => r.json())
       .then(resp => {
-        for (var i in resp.items) {
-          var data = resp.items[i];
-
-          var item = {
-            date: new Date(data.published),
-            id: data.id,
-            source: "Blogger",
-            link: data.url,
-            media: "",
-            content: data.content
-          };
-
-          items.push(item);
-        }
+        return resp.items.map(data => ({
+          date: new Date(data.published),
+          id: data.id,
+          source: "Blogger",
+          link: data.url,
+          media: "",
+          content: data.content
+        }));
       });
   }
 
   fetchDeviantArt() {
     // Parse Deviantart RSS feed and get past CORS through https://developer.yahoo.com/yql/
     var url = "https://backend.deviantart.com/rss.xml?q=gallery:mini-michael/33242408";
-
     return fetch(
       "https://query.yahooapis.com/v1/public/yql?q=select * from rss where url='" +
         url +
@@ -51,13 +26,10 @@ class Fetcher {
     )
       .then(r => r.json())
       .then(resp => {
-        var count = Math.min(resp.query.results.item.length, 20);
-        for (var i = 0; i < count; i++) {
-          var data = resp.query.results.item[i];
+        return resp.query.results.item.map(data => {
           var urlParts = data.guid.content.split("/");
           var title = urlParts[urlParts.length - 1].split("-")[0];
-
-          var item = {
+          return {
             date: new Date(data.pubDate),
             id: title,
             source: "Deviant Art",
@@ -65,9 +37,7 @@ class Fetcher {
             media: "<img class='content-media' src = '" + data.thumbnail[data.thumbnail.length - 1].url + "' />",
             content: ""
           };
-
-          items.push(item);
-        }
+        });
       });
   }
 
@@ -82,8 +52,7 @@ class Fetcher {
         return JSON.parse(match[0]);
       })
       .then(resp => {
-        for (var i in resp.data) {
-          var data = resp.data[i];
+        return resp.data.map(data => {
           var content = "";
           if (data.type === "video") {
             content =
@@ -98,7 +67,7 @@ class Fetcher {
             content = "<img class='content-media' src = '" + data.images.standard_resolution.url + "' />";
           }
 
-          var item = {
+          return {
             date: new Date(data.created_time * 1000),
             id: data.id,
             source: "Instagram",
@@ -106,9 +75,7 @@ class Fetcher {
             media: content,
             content: data.caption.text
           };
-
-          items.push(item);
-        }
+        });
       });
   }
 
@@ -118,8 +85,7 @@ class Fetcher {
     )
       .then(r => r.json())
       .then(resp => {
-        for (var i in resp) {
-          var data = resp[i];
+        return resp.map(data => {
           var iframeSrc =
             "https://w.soundcloud.com/player/?url=" +
             data.uri +
@@ -131,13 +97,13 @@ class Fetcher {
             iframeSrc +
             "' width='100%' height='130' scrolling='no' frameborder='no' target='_top'></iframe>";
 
-          var item = {
+          return {
+            date: new Date(data.created_at),
             id: data.id,
             source: "Sound Cloud",
             media: content
           };
-          items.push(item);
-        }
+        });
       });
   }
 
@@ -147,28 +113,19 @@ class Fetcher {
     )
       .then(r => r.json())
       .then(resp => {
-        for (var i in resp.response.checkins.items) {
-          var data = resp.response.checkins.items[i];
-          if (data.photos.items.length <= 0) {
-            continue;
-          }
-
-          var item = {
-            date: new Date(data.createdAt * 1000),
-            id: data.id,
-            source: "Swarm",
-            link: data.source.url,
-            media:
-              "<img class='content-media' src = '" +
-              data.photos.items[0].prefix +
-              "300x300" +
-              data.photos.items[0].suffix +
-              "' />",
-            content: data.shout
-          };
-
-          items.push(item);
-        }
+        return resp.response.checkins.items.filter(data => data.photos.items.length > 0).map(data => ({
+          date: new Date(data.createdAt * 1000),
+          id: data.id,
+          source: "Swarm",
+          link: data.source.url,
+          media:
+            "<img class='content-media' src = '" +
+            data.photos.items[0].prefix +
+            "300x300" +
+            data.photos.items[0].suffix +
+            "' />",
+          content: data.shout
+        }));
       });
   }
 
@@ -211,7 +168,7 @@ class Fetcher {
         }
         media += "</div>";
       }
-      var item = {
+      return {
         date: new Date(data.dateTime),
         id: data.id,
         source: "Twitter",
@@ -219,8 +176,6 @@ class Fetcher {
         media: "",
         content: author + data.html + media
       };
-
-      items.push(item);
     }
   }
 
