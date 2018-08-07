@@ -6,6 +6,29 @@ class Projects extends Component {
     return (
       <div className="projects">
         <Project
+          title="Minesweeper"
+          date="2018"
+          description="In an effort to get more frontend experiences, specifically in React, I built a web version of Minesweeper. 
+          The board will fill up the entire height and width of the window and place bombs randomly at 20% of the open locations.
+          It will work on any screen size, even mobile. It uses Material Design components to keep a nice and clean look and feel.
+          <br /><br />
+          The application uses Google Analytics to track user interaction with the website and even uses custom events to track when users win or lose.
+          It uses Firebase for free web hosting, and CircleCI for continuous integration to automatically build and deploy new changes."
+          video="/projects/minesweeper/Minesweeper.mp4"
+          buttons={[
+            {
+              text: "Code",
+              link: "https://github.com/Jesse0Michael/react-minesweeper",
+              icon: "code"
+            },
+            {
+              text: "Play",
+              link: "https://minesweeper-cb7d3.firebaseapp.com/",
+              icon: "play_arrow"
+            }
+          ]}
+        />
+        <Project
           title="Go Rest Assured"
           date="2018"
           description="Entering the world of Open Source Software, I built a tool in GO that I find very useful and hope other find it useful as well.
