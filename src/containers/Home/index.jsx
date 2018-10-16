@@ -15,7 +15,7 @@ class Home extends Component {
   }
 
   componentWillUnmount() {
-    // document.removeEventListener("scroll", this.trackScrolling);
+    document.removeEventListener("scroll", this.trackScrolling);
   }
 
   componentDidMount() {
@@ -39,17 +39,19 @@ class Home extends Component {
 
   isBottom(el) {
     if (el == null) {
-      return false
+      return false;
     }
     return el.getBoundingClientRect().bottom <= window.innerHeight;
   }
 
-  render() {
+  trackScrolling = () => {
     const wrappedElement = document.getElementById("homie");
     if (this.isBottom(wrappedElement)) {
-      console.log("header bottom reached");
-      document.removeEventListener("scroll", this.trackScrolling);
+      this.setState({ count: this.state.count + 20 });
     }
+  };
+
+  render() {
     return (
       <div className="home">
         <Grid id="homie" container className="home-grid">
