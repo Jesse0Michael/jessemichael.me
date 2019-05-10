@@ -18,7 +18,8 @@ class Fetcher {
 
   fetchDeviantArt() {
     // Parse Deviantart RSS feed and get past CORS through https://developer.yahoo.com/yql/
-    var url = "https://backend.deviantart.com/rss.xml?q=gallery:mini-michael/33242408";
+    var url =
+      "https://backend.deviantart.com/rss.xml?q=gallery:mini-michael/33242408";
     return fetch(
       "https://query.yahooapis.com/v1/public/yql?q=select * from rss where url='" +
         url +
@@ -34,7 +35,10 @@ class Fetcher {
             id: title,
             source: "Deviant Art",
             link: data.guid.content,
-            media: "<img class='content-media' src = '" + data.thumbnail[data.thumbnail.length - 1].url + "' />",
+            media:
+              "<img class='content-media' src = '" +
+              data.thumbnail[data.thumbnail.length - 1].url +
+              "' />",
             content: ""
           };
         });
@@ -64,7 +68,15 @@ class Fetcher {
               data.videos.standard_resolution.url +
               "\" type='video/mp4'></video>";
           } else {
-            content = "<img class='content-media' src = '" + data.images.standard_resolution.url + "' />";
+            content =
+              "<img class='content-media' src = '" +
+              data.images.standard_resolution.url +
+              "' />";
+          }
+
+          var text = "";
+          if (data.caption) {
+            text = data.caption.text;
           }
 
           return {
@@ -73,7 +85,7 @@ class Fetcher {
             source: "Instagram",
             link: data.link,
             media: content,
-            content: data.caption.text
+            content: text
           };
         });
       });
@@ -113,19 +125,21 @@ class Fetcher {
     )
       .then(r => r.json())
       .then(resp => {
-        return resp.response.checkins.items.filter(data => data.photos.items.length > 0).map(data => ({
-          date: new Date(data.createdAt * 1000),
-          id: data.id,
-          source: "Swarm",
-          link: data.source.url,
-          media:
-            "<img class='content-media' src = '" +
-            data.photos.items[0].prefix +
-            "300x300" +
-            data.photos.items[0].suffix +
-            "' />",
-          content: data.shout
-        }));
+        return resp.response.checkins.items
+          .filter(data => data.photos.items.length > 0)
+          .map(data => ({
+            date: new Date(data.createdAt * 1000),
+            id: data.id,
+            source: "Swarm",
+            link: data.source.url,
+            media:
+              "<img class='content-media' src = '" +
+              data.photos.items[0].prefix +
+              "300x300" +
+              data.photos.items[0].suffix +
+              "' />",
+            content: data.shout
+          }));
       });
   }
 
@@ -203,29 +217,46 @@ class Fetcher {
       for (x = 0; x < els.length; x++) {
         el = els[x];
         tweet = {};
-        tweet.retweet = el.getElementsByClassName("timeline-Tweet-retweetCredit").length > 0;
+        tweet.retweet =
+          el.getElementsByClassName("timeline-Tweet-retweetCredit").length > 0;
         tweet.id = el.getAttribute("data-tweet-id");
         tmp = el.getElementsByClassName("timeline-Tweet-text")[0];
         tweet.html = tmp.innerHTML;
         tweet.text = tmp.textContent || tmp.innerText; // IE8 doesn't support textContent
         tmp = el.getElementsByClassName("timeline-Tweet-author")[0];
         tweet.author = {
-          url: tmp.getElementsByClassName("TweetAuthor-link")[0].getAttribute("href"),
-          avatar: tmp.getElementsByClassName("Avatar")[0].getAttribute("data-src-1x"),
+          url: tmp
+            .getElementsByClassName("TweetAuthor-link")[0]
+            .getAttribute("href"),
+          avatar: tmp
+            .getElementsByClassName("Avatar")[0]
+            .getAttribute("data-src-1x"),
           fullName: tmp.getElementsByClassName("TweetAuthor-name")[0].innerText,
-          nickName: tmp.getElementsByClassName("TweetAuthor-screenName")[0].innerText
+          nickName: tmp.getElementsByClassName("TweetAuthor-screenName")[0]
+            .innerText
         };
         tweet.updated = el.getElementsByClassName("dt-updated")[0].innerText;
-        tweet.dateTime = el.getElementsByClassName("dt-updated")[0].getAttribute("datetime");
-        tweet.permalink = el.getElementsByClassName("timeline-Tweet-timestamp")[0].getAttribute("href");
+        tweet.dateTime = el
+          .getElementsByClassName("dt-updated")[0]
+          .getAttribute("datetime");
+        tweet.permalink = el
+          .getElementsByClassName("timeline-Tweet-timestamp")[0]
+          .getAttribute("href");
         if (el.getElementsByClassName("timeline-Tweet-media")[0]) {
           var elements = el.getElementsByClassName("Interstitial");
           while (elements.length > 0) {
             elements[0].parentNode.removeChild(elements[0]);
           }
-          this.removeStyles(el.getElementsByClassName("timeline-Tweet-media")[0]);
-          tweet.inlineMedia = el.getElementsByClassName("timeline-Tweet-media")[0].innerHTML;
-          tweet.media = this.findAttribute(el.getElementsByClassName("timeline-Tweet-media")[0], "data-image");
+          this.removeStyles(
+            el.getElementsByClassName("timeline-Tweet-media")[0]
+          );
+          tweet.inlineMedia = el.getElementsByClassName(
+            "timeline-Tweet-media"
+          )[0].innerHTML;
+          tweet.media = this.findAttribute(
+            el.getElementsByClassName("timeline-Tweet-media")[0],
+            "data-image"
+          );
         }
 
         response.tweets.push(tweet);
@@ -242,7 +273,8 @@ class Fetcher {
 
     if (el.childNodes.length > 0) {
       for (var child in el.childNodes) {
-        if (el.childNodes[child].nodeType === 1) found = found.concat(this.findAttribute(el.childNodes[child], attr));
+        if (el.childNodes[child].nodeType === 1)
+          found = found.concat(this.findAttribute(el.childNodes[child], attr));
       }
     }
     return found;
@@ -252,13 +284,17 @@ class Fetcher {
     el.removeAttribute("style");
     if (el.getAttribute("data-srcset") != null) {
       el.classList.add("lazyload");
-      el.setAttribute("data-srcset", decodeURIComponent(el.getAttribute("data-srcset")));
+      el.setAttribute(
+        "data-srcset",
+        decodeURIComponent(el.getAttribute("data-srcset"))
+      );
     }
 
     if (el.childNodes.length > 0) {
       for (var child in el.childNodes) {
         /* filter element nodes only */
-        if (el.childNodes[child].nodeType === 1) this.removeStyles(el.childNodes[child]);
+        if (el.childNodes[child].nodeType === 1)
+          this.removeStyles(el.childNodes[child]);
       }
     }
   }
