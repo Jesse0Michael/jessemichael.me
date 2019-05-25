@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:7.10
+      - image: circleci/node:8
     working_directory: ~/jessemichael.me
     steps:
       - checkout
@@ -12,8 +12,8 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       - run: npm install
-      - run: npm install firebase -g
-      - run: npm install typescript -g
+      - run: npm install firebase
+      - run: npm install typescript
       - save_cache:
           paths:
             - node_modules
