@@ -1,7 +1,9 @@
 # dependencies
-/node_modules
+**/node_modules/**
+functions/lib
 
 # testing
+functions/.runtimeconfig.json
 /coverage
 
 # production
@@ -15,5 +17,6 @@
 .env.production.local
 
 npm-debug.log*
+firebase-debug.log*
 yarn-debug.log*
 yarn-error.log*
