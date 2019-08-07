@@ -40,7 +40,7 @@ class Bio extends Component {
             </Button>
           </Grid>
           <Grid item>
-            <Button variant="contained" className="bio-button" href="http://www.linkedin.com/pub/jesse0michael/">
+            <Button variant="contained" className="bio-button" href="https://www.linkedin.com/in/jesse0michael/">
               <img src="/icons/linkedin.svg" className="bio-img" alt=""/>
               <span className="bio-text">Linked In</span>
             </Button>
