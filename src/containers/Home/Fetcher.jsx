@@ -47,7 +47,7 @@ class Fetcher {
 
   fetchInstagram() {
     return fetch(
-      "https://api.instagram.com/v1/users/50957893/media/recent?access_token=50957893.c4c5a38.45731381623a4ddd86c042851d4d317f&callback=JSON_CALLBACK"
+      "https://api.instagram.com/v1/users/50957893/media/recent?access_token=50957893.c4c5a38.5f5ecfec43904678a4e5f381a714f7b8&callback=JSON_CALLBACK"
     )
       .then(response => response.text())
       .then(responseText => {
