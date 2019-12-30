@@ -1,0 +1,67 @@
+openapi: 3.0.2
+info:
+  description: Internal workings of Jesse Michael
+  title: jessemichael.me internal
+  version: v1
+servers:
+- description: Jesse's internal api
+  url: http://jessemichael.me/v1
+paths:
+  /feed:
+    get:
+      description: Get feed.
+      operationId: getFeed
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/feedItems'
+                type: array
+          description: feed item array response
+      summary: Get feed
+components:
+  schemas:
+    feedItems:
+      example:
+        items:
+        - name: name
+          tag: tag
+          adoptionDate: 2000-01-23
+          surrenderDate: 2000-01-23
+        - name: name
+          tag: tag
+          adoptionDate: 2000-01-23
+          surrenderDate: 2000-01-23
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/feedItem'
+          type: array
+      required:
+      - items
+      type: object
+    feedItem:
+      example:
+        name: name
+        tag: tag
+        adoptionDate: 2000-01-23
+        surrenderDate: 2000-01-23
+      properties:
+        id:
+          type: string
+        date:
+          format: date
+          type: string
+        source:
+          type: string
+        media:
+          type: string
+        content:
+          type: string
+      required:
+      - date
+      - id
+      - source
+      type: object
