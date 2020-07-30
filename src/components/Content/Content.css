@@ -13,3 +13,13 @@
   float: right;
   line-height: 38px;
 }
+.twitter-avatar {
+	height: 28px;
+	width: 28px;
+	vertical-align: top;
+	float: left;
+	padding: 5px;
+}
+.twitter-media {
+	margin-top: 10px;
+}
