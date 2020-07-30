@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
+import { DefaultApi } from "@jesse0michael/fetcher";
 import Content from "../../components/Content";
 import "./Home.css";
-import Fetcher from "./Fetcher";
 
-const fetcher = new Fetcher();
 class Home extends Component {
   constructor(p) {
     super(p);
@@ -20,21 +19,12 @@ class Home extends Component {
 
   componentDidMount() {
     document.addEventListener("scroll", this.trackScrolling);
-    this.setState({ items: [] });
-    fetcher.fetchBlogger().then(i => this.addItems(i));
-    fetcher.fetchDeviantArt().then(i => this.addItems(i));
-    fetcher.fetchInstagram().then(i => this.addItems(i));
-    fetcher.fetchSoundCloud().then(i => this.addItems(i));
-    fetcher.fetchSwarm().then(i => this.addItems(i));
-    fetcher.fetchTwitter().then(i => this.addItems(i));
-  }
 
-  addItems(items) {
-    this.setState({
-      items: this.state.items.concat(items).sort(function(a, b) {
-        return a.date < b.date ? 1 : b.date < a.date ? -1 : 0;
+    var fetcher = new DefaultApi("https://jesse0michael-fetcher.herokuapp.com");
+    fetcher.getFeed(60887026, 50957893, '2628647666607369284', '20560365', 'mini-michael/33242408')
+      .then(r => {
+        return this.setState({ items: r.body.items })
       })
-    });
   }
 
   isBottom(el) {
@@ -56,7 +46,7 @@ class Home extends Component {
       <div className="home">
         <Grid id="homie" container className="home-grid">
           {this.state.items &&
-            this.state.items.slice(0, this.state.count).map(function(item) {
+            this.state.items.slice(0, this.state.count).map(function (item) {
               return (
                 <div className="home-grid-item">
                   <Grid item>

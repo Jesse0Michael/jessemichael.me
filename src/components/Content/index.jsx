@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./Content.css";
+import ContentMedia from "../ContentMedia";
 import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
@@ -19,18 +19,37 @@ class Content extends Component {
   }
   sourceIcon(source) {
     switch (source) {
-      case "Instagram":
+      case "instagram":
         return "/icons/instagram.png";
-      case "Twitter":
+      case "twitter":
         return "/icons/twitter.svg";
-      case "Swarm":
+      case "swarm":
         return "/icons/swarm.png";
-      case "Sound Cloud":
+      case "soundcloud":
         return "/icons/soundcloud.svg";
-      case "Blogger":
+      case "blogger":
         return "/icons/blogger.svg";
-      case "Deviant Art":
+      case "deviantart":
         return "/icons/deviantart.svg";
+      default:
+        return "";
+    }
+  }
+
+  sourceName(source) {
+    switch (source) {
+      case "instagram":
+        return "Instagram";
+      case "twitter":
+        return "Twitter";
+      case "swarm":
+        return "Swarm";
+      case "soundcloud":
+        return "Sound Cloud";
+      case "blogger":
+        return "Blogger";
+      case "deviantart":
+        return "Deviant Art";
       default:
         return "";
     }
@@ -73,10 +92,8 @@ class Content extends Component {
         onMouseEnter={this.mouseOver}
         onMouseLeave={this.mouseOut}
       >
-        {item.media && (
-          <CardMedia>
-            <div dangerouslySetInnerHTML={{ __html: item.media }} />
-          </CardMedia>
+        {item.media && item.media.length > 0 && (
+          <ContentMedia media={item.media} id={item.id} />
         )}
         {item.content && (
           <CardContent>
@@ -85,13 +102,13 @@ class Content extends Component {
             </Typography>
           </CardContent>
         )}
-        {item.link && (
+        {item.url && (
           <CardActions>
             <div className="content-source">
-              <Button href={item.link}>
-                On {item.source} <img className="content-img" src={this.sourceIcon(item.source)} alt="" />
+              <Button href={item.url}>
+                On {this.sourceName(item.source)} <img className="content-img" src={this.sourceIcon(item.source)} alt="" />
               </Button>
-              <span className="content-date">{item.date.toLocaleString("en-US")}</span>
+              <span className="content-date">{new Date(item.ts * 1000).toLocaleString("en-US")}</span>
             </div>
           </CardActions>
         )}
