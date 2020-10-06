@@ -10,3 +10,10 @@
   margin: 18px auto;
   width: 100%;
 }
+.home-loading {
+  margin: 220px -60px;
+  width: 120px;
+  left: 50%;
+  position: absolute;
+  height: 120px;
+}

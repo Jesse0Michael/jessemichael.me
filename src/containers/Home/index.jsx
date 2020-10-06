@@ -9,7 +9,8 @@ class Home extends Component {
     super(p);
     this.state = {
       items: [],
-      count: 20
+      count: 20,
+      fetched: false
     };
   }
 
@@ -23,7 +24,7 @@ class Home extends Component {
     var fetcher = new DefaultApi("https://jesse0michael-fetcher.herokuapp.com");
     fetcher.getFeed(60887026, 50957893, '2628647666607369284', '20560365', 'jesse', 'mini-michael/33242408')
       .then(r => {
-        return this.setState({ items: r.body.items })
+        return this.setState({ items: r.body.items, fetched: true })
       })
   }
 
@@ -44,6 +45,7 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
+        {!this.state.fetched && <video muted="true" loop="true" autoPlay="true" playsinline="true" src="/pages/boxes/box.mp4" className="home-loading" />}
         <Grid id="homie" container className="home-grid">
           {this.state.items &&
             this.state.items.slice(0, this.state.count).map(function (item) {
