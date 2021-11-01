@@ -6,6 +6,22 @@ class Projects extends Component {
     return (
       <div className="projects">
         <Project
+          title="Wubs"
+          date="2019"
+          description="Just like a dream, Wubs comes to life. Fly with Wubs, the elephant, to all the places he's been. 
+          Travel far, fly through the sky, and reach for the stars!
+          <br /><br />
+          This project uses 2D game development powered by Unity and 100% custom, hand-drawn, art."
+          video="/projects/wubs/Wubs Promo.mp4"
+          buttons={[
+            {
+              text: "Code",
+              link: "https://github.com/RaineyStreetGames/Wubs",
+              icon: "code"
+            },
+          ]}
+        />
+        <Project
           title="Minesweeper"
           date="2018"
           description="In an effort to get more frontend experiences, specifically in React, I built a web version of Minesweeper. 
