@@ -82,10 +82,10 @@ class Projects extends Component {
           ]}
         />
         <Project
-          title="Boxter"
+          title="Boxster"
           date="2017"
           description="Wanting to get back into game development and work with Unity again, I remastered Phone Buddy. This time written in C# using Unity. 
-          Boxter is the name of the dog who the textures are modeled off of.
+          Boxster is the name of the dog who the textures are modeled off of.
           <br /><br />
           Working in Unity is a great for what I try to do when I have time to work on games. I'm not interested in building my own game framework. I feel accomplished when I have a working game that I can share with family and friends. 
           The goal of this project was to learn how to use Unity better and publish this dog game on all mobile platforms."
