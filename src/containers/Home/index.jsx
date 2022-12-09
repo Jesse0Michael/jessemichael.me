@@ -21,7 +21,7 @@ class Home extends Component {
   componentDidMount() {
     document.addEventListener("scroll", this.trackScrolling);
 
-    var fetcher = new DefaultApi("https://jesse0michael-fetcher.herokuapp.com");
+    var fetcher = new DefaultApi("https://fetcher-ho4joes5va-uw.a.run.app");
     fetcher.getFeed(60887026, 50957893, '2628647666607369284', '20560365', 'jesse', 'mini-michael/33242408')
       .then(r => {
         return this.setState({ items: r.body.items, fetched: true })
