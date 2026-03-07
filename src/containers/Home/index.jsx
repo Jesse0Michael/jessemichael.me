@@ -21,8 +21,17 @@ class Home extends Component {
   componentDidMount() {
     document.addEventListener("scroll", this.trackScrolling);
 
+    const twitterID    = 60887026;
+    const instagramID  = 50957893;
+    const bloggerID    = '2628647666607369284';
+    const soundcloudID = '20560365';
+    const swarmID      = 'jesse';
+    const deviantartID = 'mini-michael/33242408';
+    const untappdID    = undefined;
+    const blueskyID    = 'jesse0x4d.bsky.social';
+
     var fetcher = new DefaultApi("https://fetcher-ho4joes5va-uw.a.run.app");
-    fetcher.getFeed(60887026, 50957893, '2628647666607369284', '20560365', 'jesse', 'mini-michael/33242408')
+    fetcher.getFeed(twitterID, instagramID, bloggerID, soundcloudID, swarmID, deviantartID, untappdID, blueskyID)
       .then(r => {
         return this.setState({ items: r.body.items, fetched: true })
       })
