@@ -52,15 +52,15 @@ class Bio extends Component {
             </Button>
           </Grid>
           <Grid item>
-            <Button variant="contained" className="bio-button" href="https://steamcommunity.com/id/Jesse0Michael/">
+            <Button variant="contained" className="bio-button" href="https://steamcommunity.com/id/Jesse0x4d">
               <img src="/icons/steam2.svg" className="bio-img" alt=""/>
               <span className="bio-text">Steam</span>
             </Button>
           </Grid>
           <Grid item>
-            <Button variant="contained" className="bio-button" href="https://twitter.com/Jesse0Michael/">
-              <img src="/icons/twitter.svg" className="bio-img" alt=""/>
-              <span className="bio-text">Twitter</span>
+            <Button variant="contained" className="bio-button" href="https://bsky.app/profile/jesse0x4d.bsky.social">
+              <img src="/icons/bluesky.svg" className="bio-img" alt=""/>
+              <span className="bio-text">Bluesky</span>
             </Button>
           </Grid>
           <Grid item>
