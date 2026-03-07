@@ -23,6 +23,8 @@ class Content extends Component {
         return "/icons/instagram.png";
       case "twitter":
         return "/icons/twitter.svg";
+      case "bluesky":
+        return "/icons/bluesky.svg";
       case "swarm":
         return "/icons/swarm.png";
       case "soundcloud":
@@ -42,6 +44,8 @@ class Content extends Component {
         return "Instagram";
       case "twitter":
         return "Twitter";
+      case "bluesky":
+        return "Bluesky";
       case "swarm":
         return "Swarm";
       case "soundcloud":
